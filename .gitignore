@@ -1,0 +1,7 @@
+/data/meningioma/MEDprofileData
+/data/meningioma/csv/*
+/data/mimic/MEDprofileData
+/data/mimic/csv/*
+/data/mimic/pretrained_bert_tf
+/Not_in_project/
+!.gitkeep

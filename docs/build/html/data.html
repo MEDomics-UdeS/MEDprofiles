@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data &mdash; MEDprofiles  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MEDclasses" href="MEDclasses.html" />
+    <link rel="prev" title="MEDCohort visualisation" href="MEDcohort_semi_front.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/MEDprofiles_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="meningioma_dataset.html">Meningioma dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mimic_dataset.html">MIMIC-IV dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Notebooks</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-data.meningioma.create_master_table">Meningioma</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data.meningioma.create_master_table.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-data.mimic.create_master_table">MIMIC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.filter_df_with_patient_identifiers"><code class="docutils literal notranslate"><span class="pre">filter_df_with_patient_identifiers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.generate_event_sr_embeddings"><code class="docutils literal notranslate"><span class="pre">generate_event_sr_embeddings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.generate_patient_event_embeddings"><code class="docutils literal notranslate"><span class="pre">generate_patient_event_embeddings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.generate_patient_event_embeddings_between_dates"><code class="docutils literal notranslate"><span class="pre">generate_patient_event_embeddings_between_dates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.generate_patient_notes_embeddings"><code class="docutils literal notranslate"><span class="pre">generate_patient_notes_embeddings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.generate_patient_notes_embeddings_between_dates"><code class="docutils literal notranslate"><span class="pre">generate_patient_notes_embeddings_between_dates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.get_biobert_embeddings"><code class="docutils literal notranslate"><span class="pre">get_biobert_embeddings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.get_biobert_embeddings_from_event_list"><code class="docutils literal notranslate"><span class="pre">get_biobert_embeddings_from_event_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.get_patient_demographic_embeddings"><code class="docutils literal notranslate"><span class="pre">get_patient_demographic_embeddings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.get_patient_id"><code class="docutils literal notranslate"><span class="pre">get_patient_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.get_patient_identifiers"><code class="docutils literal notranslate"><span class="pre">get_patient_identifiers()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.get_patient_image_and_notes_embeddings"><code class="docutils literal notranslate"><span class="pre">get_patient_image_and_notes_embeddings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data.mimic.create_master_table.split_note_document"><code class="docutils literal notranslate"><span class="pre">split_note_document()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="MEDclasses.html">MEDclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front.html">Semi-front</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MEDprofiles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/data.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data">
+<h1>Data<a class="headerlink" href="#data" title="Permalink to this heading"></a></h1>
+<section id="module-data.meningioma.create_master_table">
+<span id="meningioma"></span><h2>Meningioma<a class="headerlink" href="#module-data.meningioma.create_master_table" title="Permalink to this heading"></a></h2>
+<p>This file create a temporal master table from Meningioma data. The folder meningioma/csv must contains the following csv
+files:</p>
+<ul class="simple">
+<li><p>meningioma.outcome.time004.pathology.csv</p></li>
+<li><p>meningioma.variable.time001.demographics.csv</p></li>
+<li><p>meningioma.variable.time002.radiographics.csv</p></li>
+<li><p>meningioma.variable.time003.therapy.csv</p></li>
+<li><p>meningioma.variable.time004.pathology.csv</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="data.meningioma.create_master_table.main">
+<span class="sig-prename descclassname"><span class="pre">data.meningioma.create_master_table.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data.meningioma.create_master_table.main" title="Permalink to this definition"></a></dt>
+<dd><p>Main function that creates a temporal master table from Meningioma data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-data.mimic.create_master_table">
+<span id="mimic"></span><h2>MIMIC<a class="headerlink" href="#module-data.mimic.create_master_table" title="Permalink to this heading"></a></h2>
+<p>This file create a temporal master table from MIMIC-IV data. The folder mimic/csv must contains the following csv files:</p>
+<ul class="simple">
+<li><p>admissions.csv</p></li>
+<li><p>chartevents.csv</p></li>
+<li><p>cxr_ic_fusion_1103.csv</p></li>
+<li><p>d_items.csv</p></li>
+<li><p>d_labitems.csv</p></li>
+<li><p>haim_mimiciv_key_ids.csv</p></li>
+<li><p>labevents.csv</p></li>
+<li><p>procedureevents.csv</p></li>
+<li><p>radiology.csv</p></li>
+</ul>
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.filter_df_with_patient_identifiers">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">filter_df_with_patient_identifiers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_patient_identifiers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.filter_df_with_patient_identifiers" title="Permalink to this definition"></a></dt>
+<dd><p>Get all data matching the patient identifiers in df.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> – Pandas dataframe.</p></li>
+<li><p><strong>dict_patient_identifiers</strong> – Dict of patient identifiers (i.e. subject_id, hadm_id, stay_id).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered dataframe.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.generate_event_sr_embeddings">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">generate_event_sr_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sr_patient_event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.generate_event_sr_embeddings" title="Permalink to this definition"></a></dt>
+<dd><p>Generate embeddings for an event given time series data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sr_patient_event</strong> – Pandas time series concerning a certain event for a patient.</p></li>
+<li><p><strong>event</strong> – The event name (str).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>sr_embeddings: Embeddings for the series sr_patient_event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.generate_patient_event_embeddings">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">generate_patient_event_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_item_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_key_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_patient_identifiers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_category_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timedelta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.generate_patient_event_embeddings" title="Permalink to this definition"></a></dt>
+<dd><p>Generate patient embeddings for a certain event category, one row every timedelta range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_events</strong> – Pandas Dataframe from event type csv (chartevents, labevents or procedureevents).</p></li>
+<li><p><strong>event_list</strong> – List of event we want to filter (CHARTEVENTS, LABEVENTS, PROCEDUREEVENTS).</p></li>
+<li><p><strong>df_item_label</strong> – Pandas Dataframe from d_items or d_labitems csv.</p></li>
+<li><p><strong>df_key_ids</strong> – Pandas Dataframe from haim_mimic_key_ids.csv.</p></li>
+<li><p><strong>dict_patient_identifiers</strong> – Identifiers in the dataframe which allow to recognize a patient.</p></li>
+<li><p><strong>time_column</strong> – Column associated to time we want to consider in df_events.</p></li>
+<li><p><strong>series_column</strong> – Column associated to series values we want to consider in df_event.</p></li>
+<li><p><strong>event_category_name</strong> – Name we want to give to the event type in the master table.</p></li>
+<li><p><strong>timedelta</strong> – Range to consider getting timeseries.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>df_event_embeddings: Generated embeddings for the events in event list for the considered patient, computed
+at every timedelta range.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.generate_patient_event_embeddings_between_dates">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">generate_patient_event_embeddings_between_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_events</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_item_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_patient_identifiers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_category_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.generate_patient_event_embeddings_between_dates" title="Permalink to this definition"></a></dt>
+<dd><p>Generate embeddings for events for a patient between 2 dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_events</strong> – Pandas Dataframe from event type csv (chartevents, labevents or procedureevents).</p></li>
+<li><p><strong>event_list</strong> – List of event we want to filter (CHARTEVENTS, LABEVENTS, PROCEDUREEVENTS).</p></li>
+<li><p><strong>df_item_label</strong> – Pandas Dataframe from d_items or d_labitems csv.</p></li>
+<li><p><strong>dict_patient_identifiers</strong> – Dict of patient identifiers (i.e. subject_id, hadm_id, stay_id).</p></li>
+<li><p><strong>time_column</strong> – Column associated to time we want to consider in df_events.</p></li>
+<li><p><strong>series_column</strong> – Column associated to series values we want to consider in df_event.</p></li>
+<li><p><strong>event_category_name</strong> – Name we want to give to the event type in the master table.</p></li>
+<li><p><strong>start_date</strong> – Date where we start looking for.</p></li>
+<li><p><strong>end_date</strong> – Date where we stop looking for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>df_event_embeddings: Generated embeddings for the events in event_list between start_date and end_date.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.generate_patient_notes_embeddings">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">generate_patient_notes_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_notes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_admissions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_key_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patient_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timedelta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.generate_patient_notes_embeddings" title="Permalink to this definition"></a></dt>
+<dd><p>Generate notes embeddings for a patient every timedelta range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_notes</strong> – Pandas Dataframe of notes (radiology.csv).</p></li>
+<li><p><strong>df_admissions</strong> – Pandas Dataframe from admissions.csv.</p></li>
+<li><p><strong>df_key_ids</strong> – Pandas Dataframe from haim_mimic_key_ids.csv.</p></li>
+<li><p><strong>patient_id</strong> – hadm_id of a patient.</p></li>
+<li><p><strong>timedelta</strong> – Time range for embeddings generation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>df_notes_embeddings: Pandas Dataframe of notes embeddings for the considered patient, every timedelta range</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.generate_patient_notes_embeddings_between_dates">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">generate_patient_notes_embeddings_between_dates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_notes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_admissions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_patient_identifiers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.generate_patient_notes_embeddings_between_dates" title="Permalink to this definition"></a></dt>
+<dd><p>Generate patient notes embeddings between two dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_notes</strong> – Pandas Dataframe from notes.</p></li>
+<li><p><strong>df_admissions</strong> – Pandas Dataframe from admissions.csv.</p></li>
+<li><p><strong>dict_patient_identifiers</strong> – Dict of patient identifiers (i.e. subject_id, hadm_id, stay_id).</p></li>
+<li><p><strong>start_date</strong> – Beginning date to consider for embeddings generation.</p></li>
+<li><p><strong>end_date</strong> – End date to consider for embeddings generation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>df_patient_notes_embeddings: Pandas Dataframe of note embeddings for the patient matching
+dict_patient_identifiers between start date and end date.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.get_biobert_embeddings">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">get_biobert_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.get_biobert_embeddings" title="Permalink to this definition"></a></dt>
+<dd><p>Function taken from the GitHub repository of the HAIM study. Obtain BioBERT embeddings of text string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> – Input text (str).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>embeddings: Final Biobert embeddings with vector dimensionality = (1,768).
+hidden_embeddings: Last hidden layer in Biobert model with vector dimensionality = (token_size,768).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.get_biobert_embeddings_from_event_list">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">get_biobert_embeddings_from_event_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.get_biobert_embeddings_from_event_list" title="Permalink to this definition"></a></dt>
+<dd><p>Function taken from the GitHub repository of the HAIM study. For notes obtain fixed-size BioBERT embeddings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_list</strong> – Timebound ICU patient stay structure filtered by max_time_stamp or min_time_stamp if any.</p></li>
+<li><p><strong>event_weights</strong> – Weights for aggregation of features in final embeddings.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>aggregated_embeddings: BioBERT event features for all events.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.get_patient_demographic_embeddings">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">get_patient_demographic_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patient_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_patient_identifiers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_embeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_admissions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.get_patient_demographic_embeddings" title="Permalink to this definition"></a></dt>
+<dd><p>Return patient demographic embeddings from df_embeddings and admission time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patient_id</strong> – hadm_id of the patient.</p></li>
+<li><p><strong>dict_patient_identifiers</strong> – Dict of patient identifiers (i.e. subject_id, hadm_id, stay_id).</p></li>
+<li><p><strong>df_embeddings</strong> – Pandas Dataframe from cxr_ic_fusion_1103.csv.</p></li>
+<li><p><strong>df_admissions</strong> – Pandas Dataframe from admissions.csv.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>df_demographic_embeddings: Pandas Dataframe containing demographic embeddings of the considered patient.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.get_patient_id">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">get_patient_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_patient_identifiers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_key_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.get_patient_id" title="Permalink to this definition"></a></dt>
+<dd><p>Get patient id from dict of identifiers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_patient_identifiers</strong> – Dict of patient identifiers (i.e. subject_id, hadm_id, stay_id).</p></li>
+<li><p><strong>df_key_ids</strong> – Pandas Dataframe from haim_mimic_key_ids.csv.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.get_patient_identifiers">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">get_patient_identifiers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">haim_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_key_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.get_patient_identifiers" title="Permalink to this definition"></a></dt>
+<dd><p>Get patient identifiers (ie. subject_id, hadm_id, stay_id) given haim_id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>haim_id</strong> – haim_id of the patient we want identifiers.</p></li>
+<li><p><strong>df_key_ids</strong> – Pandas Dataframe from haim_mimic_key_ids.csv.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict of patients identifiers matching haim_id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.get_patient_image_and_notes_embeddings">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">get_patient_image_and_notes_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patient_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_embeddings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.get_patient_image_and_notes_embeddings" title="Permalink to this definition"></a></dt>
+<dd><p>Get image and notes embeddings from the embeddings dataframe given a patient_id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patient_id</strong> – hadm_id of a patient.</p></li>
+<li><p><strong>df_embeddings</strong> – Pandas Dataframe from cxr_ic_fusion_1103.csv.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>df_image_embeddings: Image and notes embeddings for the patient.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.main">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.main" title="Permalink to this definition"></a></dt>
+<dd><p>Main function that creates a temporal master table from MIMIC-IV data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data.mimic.create_master_table.split_note_document">
+<span class="sig-prename descclassname"><span class="pre">data.mimic.create_master_table.</span></span><span class="sig-name descname"><span class="pre">split_note_document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data.mimic.create_master_table.split_note_document" title="Permalink to this definition"></a></dt>
+<dd><p>Function taken from the GitHub repository of the HAIM study. Split a text if too long for embeddings generation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> – String of text to be processed into an embedding. BioBERT can only process a string with â‰¤ 512 tokens
+. If the input text exceeds this token count, we split it based on line breaks (driven from the discharge
+summary syntax).</p></li>
+<li><p><strong>min_length</strong> – When parsing the text into its subsections, remove text strings below a minimum length. These are
+generally very short and encode minimal information (e.g. ‘Name: ___’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>chunk_parse: A list of “chunks”, i.e. text strings, that breaks up the original text into strings with 512
+tokens.
+chunk_length: A list of the token counts for each “chunk”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MEDcohort_semi_front.html" class="btn btn-neutral float-left" title="MEDCohort visualisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MEDclasses.html" class="btn btn-neutral float-right" title="MEDclasses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sarah DENIS.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
