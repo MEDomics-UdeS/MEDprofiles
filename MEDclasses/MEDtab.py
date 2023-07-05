@@ -7,19 +7,7 @@ from src.back.constant import DATE_FORMAT
 
 
 class MEDtab(MEDbaseObject):
-    Date: Optional[datetime.datetime]
-    Time_point: Optional[float]
-    demographic: Optional[demographic]
-    chartevent: Optional[chartevent]
-    labevent: Optional[labevent]
-    vd: Optional[vd]
-    vp: Optional[vp]
-    vmd: Optional[vmd]
-    vmp: Optional[vmp]
-    necg: Optional[necg]
-    nech: Optional[nech]
-    nrad: Optional[nrad]
-    procedureevent: Optional[procedureevent]
+    pass
 
     @validator("Date", pre=True)
     @classmethod

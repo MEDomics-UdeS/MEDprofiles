@@ -691,12 +691,12 @@ Axes and corresponding to the selected points in the plot.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.semi_front.MEDcohort_utils.is_class_associated_to_time_point">
-<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDcohort_utils.</span></span><span class="sig-name descname"><span class="pre">is_class_associated_to_time_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_class_time_points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDcohort_utils.is_class_associated_to_time_point" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDcohort_utils.</span></span><span class="sig-name descname"><span class="pre">is_class_associated_to_time_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_class_time_points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDcohort_utils.is_class_associated_to_time_point" title="Permalink to this definition"></a></dt>
 <dd><p>Return True if class where the event occurs is associated to a time point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>event</strong> – Matplotlib Event object.</p></li>
+<li><p><strong>class</strong> – <a href="#id1"><span class="problematic" id="id2">class_</span></a> from MEDprofile object.</p></li>
 <li><p><strong>dict_class_time_points</strong> – Dict associating class names to their matching time points.</p></li>
 </ul>
 </dd>
@@ -789,12 +789,12 @@ Axes and corresponding to the selected points in the plot.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.semi_front.MEDcohort_utils.remove_time_point">
-<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDcohort_utils.</span></span><span class="sig-name descname"><span class="pre">remove_time_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_cohort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_class_time_points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDcohort_utils.remove_time_point" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDcohort_utils.</span></span><span class="sig-name descname"><span class="pre">remove_time_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_cohort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_class_time_points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDcohort_utils.remove_time_point" title="Permalink to this definition"></a></dt>
 <dd><p>Remove the time point attributed to a class, update the superiors time points and update cohort.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>event</strong> – Matplotlib Event object.</p></li>
+<li><p><strong>class</strong> – class associated to a MEDprofile object.</p></li>
 <li><p><strong>df_cohort</strong> – Pandas Dataframe of a MEDcohort.</p></li>
 <li><p><strong>dict_class_time_points</strong> – Dict associating class names to their matching time points.</p></li>
 </ul>
@@ -879,12 +879,12 @@ for the class or one row by attributes to display in the class). Keys are class 
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.semi_front.MEDcohort_utils.set_time_point">
-<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDcohort_utils.</span></span><span class="sig-name descname"><span class="pre">set_time_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_cohort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_class_time_points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDcohort_utils.set_time_point" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDcohort_utils.</span></span><span class="sig-name descname"><span class="pre">set_time_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_cohort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_class_time_points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDcohort_utils.set_time_point" title="Permalink to this definition"></a></dt>
 <dd><p>Attribute a time point to a class and update cohort.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>event</strong> – Matplotlib Event object.</p></li>
+<li><p><strong>class</strong> – Class associated to a MEDprofile object.</p></li>
 <li><p><strong>df_cohort</strong> – Pandas Dataframe of a MEDcohort.</p></li>
 <li><p><strong>dict_class_time_points</strong> – Dict associating class names to their matching time points.</p></li>
 </ul>

@@ -299,64 +299,54 @@ def set_time_relative_to_class_in_cohort(df_cohort, cls):
                                                          downcast='integer')
 
 
-def is_class_associated_to_time_point(event, dict_class_time_points):
+def is_class_associated_to_time_point(class_, dict_class_time_points):
     """
     Return True if class where the event occurs is associated to a time point.
 
-    :param event: Matplotlib Event object.
+    :param class_: class_ from MEDprofile object.
     :param dict_class_time_points: Dict associating class names to their matching time points.
 
     :return:
 
     """
-    class_ = get_class(event)
     return class_ in list(dict_class_time_points.keys())
 
 
-def set_time_point(event, df_cohort, dict_class_time_points):
+def set_time_point(class_, df_cohort, dict_class_time_points):
     """
     Attribute a time point to a class and update cohort.
 
-    :param event: Matplotlib Event object.
+    :param class_: Class associated to a MEDprofile object.
     :param df_cohort: Pandas Dataframe of a MEDcohort.
     :param dict_class_time_points: Dict associating class names to their matching time points.
 
     :return:
 
     """
-    class_ = get_class(event)
-
     # Update dict associating class to time points
     time_point = len(list(dict_class_time_points.keys())) + 1
     dict_class_time_points[class_] = time_point
 
     # Get column_names relative to class
     column_names = []
-    for attribute in eval(class_).__fields__:
+    for attribute in get_class_fields(class_):
         column_names.append(str(class_ + '_' + attribute))
 
     # Update cohort where class has values
-    df_cohort['index'] = df_cohort.index
-    df_cohort.index = [i for i in range(len(df_cohort))]
-    for i in df_cohort.index:
-        if any(element in list(df_cohort.loc[i].dropna().keys()) for element in column_names):
-            df_cohort.at[i, FIXED_COLUMNS[2]] = time_point
-    df_cohort.index = df_cohort['index']
-    df_cohort.drop('index', axis=1, inplace=True)
+    df_cohort.loc[df_cohort[column_names].notna().any(axis=1), FIXED_COLUMNS[2]] = time_point
 
 
-def remove_time_point(event, df_cohort, dict_class_time_points):
+def remove_time_point(class_, df_cohort, dict_class_time_points):
     """
     Remove the time point attributed to a class, update the superiors time points and update cohort.
 
-    :param event: Matplotlib Event object.
+    :param class_: class associated to a MEDprofile object.
     :param df_cohort: Pandas Dataframe of a MEDcohort.
     :param dict_class_time_points: Dict associating class names to their matching time points.
 
     :return:
 
     """
-    class_ = get_class(event)
     time_point = dict_class_time_points[class_]
 
     # Remove associated time point from plot
@@ -589,10 +579,13 @@ def t_pressed(event, axes, df_cohort, classes_attributes_dict, dict_points, dict
     :return:
 
     """
-    if is_class_associated_to_time_point(event, dict_class_time_points):
-        remove_time_point(event, df_cohort, dict_class_time_points)
+    class_ = get_class(event)
+    if not class_:
+        return
+    if is_class_associated_to_time_point(class_, dict_class_time_points):
+        remove_time_point(class_, df_cohort, dict_class_time_points)
     else:
-        set_time_point(event, df_cohort, dict_class_time_points)
+        set_time_point(class_, df_cohort, dict_class_time_points)
     while len(legend_points) > 0:
         remove_from_plot(legend_points[0])
         legend_points.pop(0)
