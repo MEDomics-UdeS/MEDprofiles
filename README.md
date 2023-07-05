@@ -66,6 +66,12 @@ Copy the following files into *data/mimic/csv* :
 - *procedureevents.csv*
 - *radiology.csv*
 
+In order to generate note embeddings, you also need to add pre-trained biomedical language representation model for 
+biomedical text mining called BioBERT to the project. You can obtain the BioBERT sources from the following 
+[link](https://github.com/EmilyAlsentzer/clinicalBERT). 
+You need to add the *pretrained_bert_tf* folder under *data/mimic/*. The folder must contain at least a subfolder 
+*biobert_pretrain_output_all_notes_150000*. Make sure the config json file in this subfolder is named config.json.
+
 Then, run *data/mimic/create_master_table.ipynb*. This will create the master table used in the repository, saved as 
 *data/mimic/csv/master_table.csv*. Please note that, for computational efficiency, the master table created for the 
 MIMIC-IV dataset will only contain a sample of one hundred patients. If you wish to create a master table with more 
@@ -134,7 +140,8 @@ The tutorials are available in the following Jupyter Notebooks located in the *n
 - *MEDprofiles_semi_front.ipynb*: This tutorial shows how to visualize and manipulate a MEDprofile in a matplotlib 
   figure.
 - *MEDcohort_semi_front.ipynb*: This tutorial demonstrates how to visualize and manipulate a MEDcohort (a set of 
-  MEDprofiles) in a matplotlib figure.
+  MEDprofiles) in a matplotlib figure. Additionally, you will be able to save the cohort data split by time point under 
+  the *output/* folder by executing the last cell of the notebook.
 
 
 ## 6. Datasource's

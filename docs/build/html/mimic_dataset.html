@@ -101,6 +101,11 @@
 <li><p><em>procedureevents.csv</em></p></li>
 <li><p><em>radiology.csv</em></p></li>
 </ul>
+<p>In order to generate note embeddings, you also need to add pre-trained biomedical language representation model for
+biomedical text mining called BioBERT to the project. You can obtain the BioBERT sources from the following
+<a class="reference external" href="https://github.com/EmilyAlsentzer/clinicalBERT">link</a>.
+You need to add the <em>pretrained_bert_tf</em> folder under <em>data/mimic/</em>. The folder must contain at least a subfolder
+<em>biobert_pretrain_output_all_notes_150000</em>. Make sure the config json file in this subfolder is named config.json.</p>
 <p>Then, run <em>data/mimic/create_master_table.ipynb</em>. This will create the master table used in the repository, saved as
 <em>data/mimic/csv/master_table.csv</em>. Please note that, for computational efficiency, the master table created for the
 MIMIC-IV dataset will only contain a sample of one hundred patients. If you wish to create a master table with more

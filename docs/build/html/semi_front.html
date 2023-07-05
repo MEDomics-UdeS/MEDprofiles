@@ -72,7 +72,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.get_nearest_child"><code class="docutils literal notranslate"><span class="pre">get_nearest_child()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.get_x_y_marker"><code class="docutils literal notranslate"><span class="pre">get_x_y_marker()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.is_time_relative_to_selected_class"><code class="docutils literal notranslate"><span class="pre">is_time_relative_to_selected_class()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.is_time_relative_to_selected_point"><code class="docutils literal notranslate"><span class="pre">is_time_relative_to_selected_point()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.r_pressed_in_profile"><code class="docutils literal notranslate"><span class="pre">r_pressed_in_profile()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.remove_from_plot"><code class="docutils literal notranslate"><span class="pre">remove_from_plot()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.scatter_and_annotate_point"><code class="docutils literal notranslate"><span class="pre">scatter_and_annotate_point()</span></code></a></li>
@@ -81,14 +80,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.set_plot"><code class="docutils literal notranslate"><span class="pre">set_plot()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.set_relative_time_in_profile_plot"><code class="docutils literal notranslate"><span class="pre">set_relative_time_in_profile_plot()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.set_time_relative_to_class_in_profile"><code class="docutils literal notranslate"><span class="pre">set_time_relative_to_class_in_profile()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.set_time_relative_to_point_in_df"><code class="docutils literal notranslate"><span class="pre">set_time_relative_to_point_in_df()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDprofiles_utils.table_design"><code class="docutils literal notranslate"><span class="pre">table_design()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-src.semi_front.MEDcohort_utils">MEDcohort utils</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDcohort_utils.bin_pressed"><code class="docutils literal notranslate"><span class="pre">bin_pressed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDcohort_utils.center_data_in_cohort"><code class="docutils literal notranslate"><span class="pre">center_data_in_cohort()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDcohort_utils.class_may_be_associate_to_time_point"><code class="docutils literal notranslate"><span class="pre">class_may_be_associate_to_time_point()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDcohort_utils.delete_pressed"><code class="docutils literal notranslate"><span class="pre">delete_pressed()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDcohort_utils.deselect_patient"><code class="docutils literal notranslate"><span class="pre">deselect_patient()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.semi_front.MEDcohort_utils.display_attributes_values"><code class="docutils literal notranslate"><span class="pre">display_attributes_values()</span></code></a></li>
@@ -310,34 +307,18 @@ for the class or one row by attributes to display in the class). Keys are class 
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.semi_front.MEDprofiles_utils.is_time_relative_to_selected_class">
-<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDprofiles_utils.</span></span><span class="sig-name descname"><span class="pre">is_time_relative_to_selected_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xaxis</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDprofiles_utils.is_time_relative_to_selected_class" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDprofiles_utils.</span></span><span class="sig-name descname"><span class="pre">is_time_relative_to_selected_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDprofiles_utils.is_time_relative_to_selected_class" title="Permalink to this definition"></a></dt>
 <dd><p>Return True if the event occurs on the axe of the relative class for time.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>event</strong> – Matplotlib Event object.</p></li>
 <li><p><strong>xaxis</strong> – From which abscissa is displayed the data.</p></li>
+<li><p><strong>df</strong> – Profile or cohort dataframe.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if time is relative to the event class, False otherwise.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.semi_front.MEDprofiles_utils.is_time_relative_to_selected_point">
-<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDprofiles_utils.</span></span><span class="sig-name descname"><span class="pre">is_time_relative_to_selected_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xaxis</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDprofiles_utils.is_time_relative_to_selected_point" title="Permalink to this definition"></a></dt>
-<dd><p>Return True if the nearest child of the event matches the relative time 0.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>event</strong> – Matplotlib Event object.</p></li>
-<li><p><strong>xaxis</strong> – From which abscissa is displayed the data.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if time is relative to the nearest point of the event, False otherwise.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -509,24 +490,6 @@ for the class or one row by attributes to display in the class). Keys are class 
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="src.semi_front.MEDprofiles_utils.set_time_relative_to_point_in_df">
-<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDprofiles_utils.</span></span><span class="sig-name descname"><span class="pre">set_time_relative_to_point_in_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xaxis</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDprofiles_utils.set_time_relative_to_point_in_df" title="Permalink to this definition"></a></dt>
-<dd><p>Set relative time to point in df_profile.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> – Pandas dataframe of a MEDprofile.</p></li>
-<li><p><strong>point</strong> – Matplotlib point we want to set the time relative to.</p></li>
-<li><p><strong>xaxis</strong> – From which abscissa is displayed the data.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="src.semi_front.MEDprofiles_utils.table_design">
 <span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDprofiles_utils.</span></span><span class="sig-name descname"><span class="pre">table_design</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDprofiles_utils.table_design" title="Permalink to this definition"></a></dt>
 <dd><p>Set the design for the table column associated with each subplot.</p>
@@ -583,23 +546,6 @@ for the class or one row by attributes to display in the class). Keys are class 
 <li><p><strong>dict_points</strong> – Dict associating MEDprofile PatientID to the list of corresponding points in Axes.</p></li>
 <li><p><strong>dict_selected_points</strong> – Dict associating MEDprofile PatientID to the list of corresponding points in Axes and
 corresponding to the selected points in the plot.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.semi_front.MEDcohort_utils.class_may_be_associate_to_time_point">
-<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDcohort_utils.</span></span><span class="sig-name descname"><span class="pre">class_may_be_associate_to_time_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_cohort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDcohort_utils.class_may_be_associate_to_time_point" title="Permalink to this definition"></a></dt>
-<dd><p>Return True if the class contains values at only one date per patient, False otherwise.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df_cohort</strong> – Pandas Dataframe of a MEDcohort.</p></li>
-<li><p><strong>cls</strong> – Class name of considered class as string.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -704,7 +650,7 @@ for the class or one row by attributes to display in the class). Keys are class 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>patient_id</strong> – PatientID of a MEDprofile.</p></li>
+<li><p><strong>event</strong> – Matplotlib Event object.</p></li>
 <li><p><strong>axes</strong> – Axes from a MEDcohort plot.</p></li>
 <li><p><strong>df_cohort</strong> – Pandas Dataframe of a MEDcohort.</p></li>
 <li><p><strong>classes_attributes_dict</strong> – Dict associating classes to the attributes we want to display and format (one row
@@ -968,7 +914,7 @@ for the class or one row by attributes to display in the class). Keys are class 
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.semi_front.MEDcohort_utils.t_pressed">
-<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDcohort_utils.</span></span><span class="sig-name descname"><span class="pre">t_pressed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_cohort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_annotations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_selected_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_selected_annotations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_class_time_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDcohort_utils.t_pressed" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.semi_front.MEDcohort_utils.</span></span><span class="sig-name descname"><span class="pre">t_pressed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_cohort</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes_attributes_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_annotations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_selected_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_selected_annotations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_class_time_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.semi_front.MEDcohort_utils.t_pressed" title="Permalink to this definition"></a></dt>
 <dd><p>Set time points according to the class matching the event place.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -976,8 +922,9 @@ for the class or one row by attributes to display in the class). Keys are class 
 <li><p><strong>event</strong> – Matplotlib Event object.</p></li>
 <li><p><strong>axes</strong> – Axes from a MEDcohort plot.</p></li>
 <li><p><strong>df_cohort</strong> – Pandas Dataframe of a MEDcohort.</p></li>
-<li><p><strong>classes</strong> – List of classes displayed in the considered figure.</p></li>
-<li><p><strong>all</strong> – If version is compact or complete.</p></li>
+<li><p><strong>classes_attributes_dict</strong> – Dict associating classes to the attributes we want to display and format (one row
+for the class or one row by attributes to display in the class). Keys are class names and values are tuples
+(list of attributes, format), with format equals to ‘compact’ or ‘complete’.</p></li>
 <li><p><strong>dict_points</strong> – Dict associating MEDprofile PatientID to the list of corresponding points in Axes.</p></li>
 <li><p><strong>dict_annotations</strong> – Dict associating MEDprofile PatientID to the list of corresponding annotations in Axes.</p></li>
 <li><p><strong>dict_selected_points</strong> – Dict associating MEDprofile PatientID to the list of corresponding points in Axes and

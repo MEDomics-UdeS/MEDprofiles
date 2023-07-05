@@ -4,4 +4,5 @@
 /data/mimic/csv/*
 /data/mimic/pretrained_bert_tf
 /Not_in_project/
+/output/*.csv
 !.gitkeep
