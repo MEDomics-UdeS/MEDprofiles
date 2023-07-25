@@ -6,7 +6,7 @@ Take a master table as entry and create dynamically classes based on the table a
 import os
 import pandas as pd
 
-from constant import *
+from ..back import constant
 
 
 def get_classes_from_df(df):
@@ -26,7 +26,7 @@ def get_classes_from_df(df):
         if pos != -1:
             class_name = column[0:pos]
             class_attribute = column[pos + 1:]
-            class_attribute_type = df[column][INDEX_TYPE_ROW]
+            class_attribute_type = df[column][constant.INDEX_TYPE_ROW]
             if class_attribute_type == 'num':
                 class_attribute_type = 'float'
             if class_name not in classes_dict:
@@ -105,10 +105,10 @@ def main(arg):
     """
     # Get value from the master table
     df = pd.read_csv(arg, header=None, on_bad_lines='skip', low_memory=False)
-    df.columns = df.iloc[INDEX_ATTRIBUTE_ROW]
+    df.columns = df.iloc[constant.INDEX_ATTRIBUTE_ROW]
 
     # Group attributes by classes
-    classes_attributes_dict = get_classes_from_df(df.drop(FIXED_COLUMNS, axis=1))
+    classes_attributes_dict = get_classes_from_df(df.drop(constant.FIXED_COLUMNS, axis=1))
 
     # Create directory MEDclasses for classes
     directory_name = 'MEDclasses'
@@ -125,7 +125,7 @@ def main(arg):
                             list(classes_attributes_dict.keys()), "MEDbaseObject")
 
     # Set constant attributes in MEDtab class
-    add_attributes_to_class(directory_path, "MEDtab", FIXED_COLUMNS[1:], FIXED_COLUMNS_TYPES[1:], "MEDbaseObject")
+    add_attributes_to_class(directory_path, "MEDtab", constant.FIXED_COLUMNS[1:], constant.FIXED_COLUMNS_TYPES[1:], "MEDbaseObject")
 
     # Create __init__ file
     init_path = os.path.join(directory_path, "__init__.py")
