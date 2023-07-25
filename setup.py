@@ -6,7 +6,7 @@ with open("README.md", encoding='utf-8') as f:
 with open('requirements.txt') as f:
     requirements = f.readlines()
 
-setup(name='MEDprofiles',
+setup(name='medprofiles',
       version='0.1.0',
       description='Python module for treatment and visualization of medical data.',
       long_description=long_description,
