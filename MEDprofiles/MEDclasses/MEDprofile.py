@@ -1,6 +1,6 @@
 from typing import List
-from MEDclasses.MEDbaseObject import MEDbaseObject
-from MEDclasses.MEDtab import MEDtab
+from .MEDbaseObject import MEDbaseObject
+from .MEDtab import MEDtab
 from typing import Optional
 
 

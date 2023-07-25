@@ -1,9 +1,8 @@
 import datetime
 from pydantic import validator
-from MEDclasses import *
-from MEDclasses.MEDbaseObject import MEDbaseObject
+from ..MEDclasses import *
 from typing import Optional
-from src.back.constant import DATE_FORMAT
+from MEDprofiles.src.back.constant import DATE_FORMAT
 
 
 class MEDtab(MEDbaseObject):

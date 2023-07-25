@@ -1,4 +1,4 @@
-from MEDclasses import *
+from ..MEDclasses import *
 from typing import List
 from pydantic import BaseModel
 from src.back.constant import *
