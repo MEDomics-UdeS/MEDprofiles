@@ -14,7 +14,7 @@ setup(name='MEDprofiles',
       author='Sarah Denis',
       author_email='dens1704@usherbrooke.ca',
       url='https://github.com/MEDomics-UdeS/MEDprofiles',
-      packages=['MEDclasses'],
+      packages=['MEDprofiles'],
       install_requires=requirements
       )
 
