@@ -8,7 +8,7 @@ from MEDprofiles.src.back.constant import DATE_FORMAT
 class MEDtab(MEDbaseObject):
     pass
 
-    @validator("Date", pre=True)
+    @validator("Date", pre=True, check_fields=False)
     @classmethod
     def parse_date(cls, value):
         value = str(value)
