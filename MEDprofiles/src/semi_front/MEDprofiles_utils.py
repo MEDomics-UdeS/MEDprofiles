@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from MEDclasses import *
-from src.back.constant import FIXED_COLUMNS, MARKERS, DATE_FORMAT
+from ..back.constant import FIXED_COLUMNS, MARKERS, DATE_FORMAT
 
 
 def get_nb_rows(classes_attributes_dict):

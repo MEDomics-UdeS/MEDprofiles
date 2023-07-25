@@ -11,7 +11,7 @@ import pickle
 from tqdm import tqdm
 
 from MEDclasses import *
-from src.back.constant import *
+from constant import *
 
 
 def main(source_file, destination_file):

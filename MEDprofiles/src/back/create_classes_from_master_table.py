@@ -6,7 +6,7 @@ Take a master table as entry and create dynamically classes based on the table a
 import os
 import pandas as pd
 
-from src.back.constant import *
+from constant import *
 
 
 def get_classes_from_df(df):
