@@ -11,7 +11,7 @@ import pickle
 from tqdm import tqdm
 
 from MEDprofiles.MEDclasses import *
-from ..back import constant
+from MEDprofiles.src.back.constant import *
 
 
 def main(source_file, destination_file):
@@ -25,19 +25,19 @@ def main(source_file, destination_file):
 
     # Get value from the master table
     df = pd.read_csv(source_file, header=None, low_memory=False)
-    df.columns = df.iloc[constant.INDEX_ATTRIBUTE_ROW]
-    df = df.drop(constant.INDEX_TYPE_ROW).drop(constant.INDEX_ATTRIBUTE_ROW)
+    df.columns = df.iloc[INDEX_ATTRIBUTE_ROW]
+    df = df.drop(INDEX_TYPE_ROW).drop(INDEX_ATTRIBUTE_ROW)
 
     # Get all the patient id and create an empty list for MEDPatients (reduced for mimic data)
-    patient_id_list = df.transpose().loc[constant.FIXED_COLUMNS[0]].drop_duplicates()[:100]
+    patient_id_list = df.transpose().loc[FIXED_COLUMNS[0]].drop_duplicates()[:100]
     med_profile_list = []
 
     # Get data for each MEDPatient
     for patientID, i in zip(patient_id_list, tqdm(range(len(patient_id_list)))):
         # To set dynamically the required attributes (without knowing their names), we have to pass through a dictionary
-        init = {constant.FIXED_COLUMNS[0]: patientID}
+        init = {FIXED_COLUMNS[0]: patientID}
         med_profile = MEDprofile(**init)
-        profile_data = df.where(df[constant.FIXED_COLUMNS[0]] == patientID).dropna(how='all')
+        profile_data = df.where(df[FIXED_COLUMNS[0]] == patientID).dropna(how='all')
         med_tab_list = []
 
         # Create MEDTab object for each row
@@ -48,7 +48,7 @@ def main(source_file, destination_file):
             for field in med_tab.__dict__:
 
                 # Fixed attributes are just str or float
-                if field in constant.FIXED_COLUMNS:
+                if field in FIXED_COLUMNS:
                     if med_tab.__fields__[field].type_ == datetime.date or med_tab.__fields__[field].type_ == \
                             datetime.datetime:
                         med_tab.__setattr__(field, MEDtab.parse_date(profile_data[field].iloc[row]))
