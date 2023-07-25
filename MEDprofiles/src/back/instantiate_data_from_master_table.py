@@ -10,7 +10,7 @@ import pandas as pd
 import pickle
 from tqdm import tqdm
 
-from MEDclasses import *
+from MEDprofiles.MEDclasses import *
 from ..back import constant
 
 
