@@ -14,7 +14,6 @@ setup(name='MEDprofiles',
       author='Sarah Denis',
       author_email='dens1704@usherbrooke.ca',
       url='https://github.com/MEDomics-UdeS/MEDprofiles',
-      package_dir={"": "MEDprofiles"},
       packages=find_packages(),
       install_requires=requirements
       )
