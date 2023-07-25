@@ -1,3 +1,4 @@
+from . import *
 from .MEDtab import MEDtab
 from .MEDprofile import MEDprofile
 from .MEDcohort import MEDcohort
