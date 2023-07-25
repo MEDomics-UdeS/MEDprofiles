@@ -6,8 +6,8 @@ Utils functions for manipulation of MEDcohort figure.
 
 import numpy as np
 
-from MEDprofiles_utils import *
-from ..back.constant import *
+from MEDprofiles.src.semi_front.MEDprofiles_utils import *
+from MEDprofiles.src.back.constant import *
 
 
 def display_cohort(axes, df_cohort, classes_attributes_dict, dict_points, dict_annotations, xaxis=[FIXED_COLUMNS[1]]):

@@ -9,8 +9,8 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from MEDclasses import *
-from ..back.constant import FIXED_COLUMNS, MARKERS, DATE_FORMAT
+from MEDprofiles.MEDclasses import *
+from MEDprofiles.src.back.constant import FIXED_COLUMNS, MARKERS, DATE_FORMAT
 
 
 def get_nb_rows(classes_attributes_dict):
