@@ -4,8 +4,11 @@ Take a master table as entry and create dynamically classes based on the table a
 
 """
 import os
+import shutil
+
 import pandas as pd
 
+import MEDprofiles
 from MEDprofiles.src.back.constant import *
 
 
@@ -94,17 +97,18 @@ def add_attributes_to_class(path, class_name, attribute_list, types_list, base_c
     file.close()
 
 
-def main(arg):
+def main(path_master_table, path_MEDclasses='../../MEDclasses'):
     """
     Main function for class creation.
 
-    :param arg: Path to the master table from which we create the classes.
+    :param path_master_table: Path to the master table from which we create the classes.
+    :param path_MEDclasses: Path to the folder where we create the MEDclasses.
 
     :return:
 
     """
     # Get value from the master table
-    df = pd.read_csv(arg, header=None, on_bad_lines='skip', low_memory=False)
+    df = pd.read_csv(path_master_table, header=None, on_bad_lines='skip', low_memory=False)
     df.columns = df.iloc[INDEX_ATTRIBUTE_ROW]
 
     # Group attributes by classes
@@ -112,23 +116,22 @@ def main(arg):
 
     # Create directory MEDclasses for classes
     directory_name = 'MEDclasses'
-    directory_path = '../../MEDclasses'
-    if not os.path.exists(directory_path):
-        os.makedirs(directory_path)
+    if not os.path.exists(path_MEDclasses):
+        shutil.copytree('../../MEDclasses', path_MEDclasses)
 
     # Create classes
     for class_ in classes_attributes_dict:
-        create_class_file(directory_path, class_, classes_attributes_dict[class_], "MEDbaseObject", directory_name)
+        create_class_file(path_MEDclasses, class_, classes_attributes_dict[class_], "MEDbaseObject", directory_name)
 
     # Set dynamic attributes in MEDtab class
-    add_attributes_to_class(directory_path, "MEDtab", list(classes_attributes_dict.keys()),
+    add_attributes_to_class(path_MEDclasses, "MEDtab", list(classes_attributes_dict.keys()),
                             list(classes_attributes_dict.keys()), "MEDbaseObject")
 
     # Set constant attributes in MEDtab class
-    add_attributes_to_class(directory_path, "MEDtab", FIXED_COLUMNS[1:], FIXED_COLUMNS_TYPES[1:], "MEDbaseObject")
+    add_attributes_to_class(path_MEDclasses, "MEDtab", FIXED_COLUMNS[1:], FIXED_COLUMNS_TYPES[1:], "MEDbaseObject")
 
     # Create __init__ file
-    init_path = os.path.join(directory_path, "__init__.py")
+    init_path = os.path.join(path_MEDclasses, "__init__.py")
     with open(init_path, "w") as file:
         for class_ in list(classes_attributes_dict.keys()) + ["MEDtab", "MEDprofile", "MEDcohort", "MEDbaseObject"]:
             file.write("from " + directory_name + "." + class_ + " import " + class_ + "\n")
