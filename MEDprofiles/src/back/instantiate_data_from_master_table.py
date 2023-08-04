@@ -6,8 +6,6 @@ The file 'create_classes_from_master_table' must have been executed before run.
 """
 
 import datetime
-import importlib
-import os
 
 import pandas as pd
 import pickle
@@ -16,7 +14,7 @@ from tqdm import tqdm
 from MEDprofiles.src.back.constant import *
 
 
-def main(source_file, destination_file):
+def main(source_file, destination_file, medprofile, medtab):
     """
     Instantiate a list of MEDPatient objects from a csv file in MEDPatientData file with pickle.
 
@@ -24,9 +22,6 @@ def main(source_file, destination_file):
     :param destination_file: path to the generated pickle file
 
     """
-    # Import MEDclasses
-    import MEDclasses
-
     # Get value from the master table
     df = pd.read_csv(source_file, header=None, low_memory=False)
     df.columns = df.iloc[INDEX_ATTRIBUTE_ROW]
@@ -40,13 +35,13 @@ def main(source_file, destination_file):
     for patientID, i in zip(patient_id_list, tqdm(range(len(patient_id_list)))):
         # To set dynamically the required attributes (without knowing their names), we have to pass through a dictionary
         init = {FIXED_COLUMNS[0]: patientID}
-        med_profile = MEDclasses.MEDprofile_module.MEDprofile(**init)
+        med_profile = medprofile(**init)
         profile_data = df.where(df[FIXED_COLUMNS[0]] == patientID).dropna(how='all')
         med_tab_list = []
 
         # Create MEDTab object for each row
         for row in range(len(profile_data)):
-            med_tab = MEDclasses.MEDtab_module.MEDtab()
+            med_tab = medtab()
 
             # For each attribute of MEDTab class
             for field in med_tab.__dict__:
@@ -55,7 +50,7 @@ def main(source_file, destination_file):
                 if field in FIXED_COLUMNS:
                     if med_tab.__fields__[field].type_ == datetime.date or med_tab.__fields__[field].type_ == \
                             datetime.datetime:
-                        med_tab.__setattr__(field, MEDclasses.MEDtab_module.MEDtab.parse_date(profile_data[field].iloc[row]))
+                        med_tab.__setattr__(field, medtab.parse_date(profile_data[field].iloc[row]))
                     else:
                         med_tab.__setattr__(field, med_tab.__fields__[field].type_(profile_data[field].iloc[row]))
 
@@ -85,6 +80,7 @@ def main(source_file, destination_file):
 
 
 if __name__ == '__main__':
-    main('../../../data/mimic/csv/master_table.csv', '../MEDprofileData')
+    from MEDprofiles import MEDclasses
+    main('../../../data/mimic/csv/master_table.csv', '../MEDprofileData', MEDclasses.MEDprofile, MEDclasses.MEDtab)
     # main('../../data/mimic/csv/master_table.csv', '../../data/mimic/MEDprofileData')
     # main('../../data/meningioma/csv/master_table.csv', '../../data/meningioma/MEDprofileData')
