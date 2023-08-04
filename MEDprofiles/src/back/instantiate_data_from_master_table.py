@@ -16,7 +16,7 @@ from tqdm import tqdm
 from MEDprofiles.src.back.constant import *
 
 
-def main(source_file, destination_file, path_to_classes='../../MEDclasses'):
+def main(source_file, destination_file):
     """
     Instantiate a list of MEDPatient objects from a csv file in MEDPatientData file with pickle.
 
@@ -25,15 +25,7 @@ def main(source_file, destination_file, path_to_classes='../../MEDclasses'):
 
     """
     # Import MEDclasses
-    medtab_path = os.path.join(path_to_classes, 'MEDtab')
-    spec_tab = importlib.util.spec_from_file_location('MEDtab', medtab_path)
-    MEDtab_module = importlib.util.module_from_spec(spec_tab)
-    spec_tab.loader.exec_module(MEDtab_module)
-
-    medprofile_path = os.path.join(path_to_classes, 'MEDprofile')
-    spec_profile = importlib.util.spec_from_file_location('MEDprofile', medprofile_path)
-    MEDprofile_module = importlib.util.module_from_spec(spec_profile)
-    spec_profile.loader.exec_module(MEDprofile_module)
+    import MEDclasses
 
     # Get value from the master table
     df = pd.read_csv(source_file, header=None, low_memory=False)
@@ -48,13 +40,13 @@ def main(source_file, destination_file, path_to_classes='../../MEDclasses'):
     for patientID, i in zip(patient_id_list, tqdm(range(len(patient_id_list)))):
         # To set dynamically the required attributes (without knowing their names), we have to pass through a dictionary
         init = {FIXED_COLUMNS[0]: patientID}
-        med_profile = MEDprofile_module.MEDprofile(**init)
+        med_profile = MEDclasses.MEDprofile_module.MEDprofile(**init)
         profile_data = df.where(df[FIXED_COLUMNS[0]] == patientID).dropna(how='all')
         med_tab_list = []
 
         # Create MEDTab object for each row
         for row in range(len(profile_data)):
-            med_tab = MEDtab_module.MEDtab()
+            med_tab = MEDclasses.MEDtab_module.MEDtab()
 
             # For each attribute of MEDTab class
             for field in med_tab.__dict__:
@@ -63,7 +55,7 @@ def main(source_file, destination_file, path_to_classes='../../MEDclasses'):
                 if field in FIXED_COLUMNS:
                     if med_tab.__fields__[field].type_ == datetime.date or med_tab.__fields__[field].type_ == \
                             datetime.datetime:
-                        med_tab.__setattr__(field, MEDtab_module.MEDtab.parse_date(profile_data[field].iloc[row]))
+                        med_tab.__setattr__(field, MEDclasses.MEDtab_module.MEDtab.parse_date(profile_data[field].iloc[row]))
                     else:
                         med_tab.__setattr__(field, med_tab.__fields__[field].type_(profile_data[field].iloc[row]))
 
