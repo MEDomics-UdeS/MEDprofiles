@@ -14,7 +14,7 @@ from tqdm import tqdm
 from MEDprofiles.src.back.constant import *
 
 
-def main(source_file, destination_file, medprofile, medtab):
+def main(source_file, destination_file, medclasses):
     """
     Instantiate a list of MEDPatient objects from a csv file in MEDPatientData file with pickle.
 
@@ -35,13 +35,13 @@ def main(source_file, destination_file, medprofile, medtab):
     for patientID, i in zip(patient_id_list, tqdm(range(len(patient_id_list)))):
         # To set dynamically the required attributes (without knowing their names), we have to pass through a dictionary
         init = {FIXED_COLUMNS[0]: patientID}
-        med_profile = medprofile(**init)
+        med_profile = medclasses.MEDprofile(**init)
         profile_data = df.where(df[FIXED_COLUMNS[0]] == patientID).dropna(how='all')
         med_tab_list = []
 
         # Create MEDTab object for each row
         for row in range(len(profile_data)):
-            med_tab = medtab()
+            med_tab = medclasses.MEDtab()
 
             # For each attribute of MEDTab class
             for field in med_tab.__dict__:
@@ -50,7 +50,7 @@ def main(source_file, destination_file, medprofile, medtab):
                 if field in FIXED_COLUMNS:
                     if med_tab.__fields__[field].type_ == datetime.date or med_tab.__fields__[field].type_ == \
                             datetime.datetime:
-                        med_tab.__setattr__(field, medtab.parse_date(profile_data[field].iloc[row]))
+                        med_tab.__setattr__(field, medclasses.medtab.parse_date(profile_data[field].iloc[row]))
                     else:
                         med_tab.__setattr__(field, med_tab.__fields__[field].type_(profile_data[field].iloc[row]))
 
@@ -81,6 +81,6 @@ def main(source_file, destination_file, medprofile, medtab):
 
 if __name__ == '__main__':
     from MEDprofiles import MEDclasses
-    main('../../../data/mimic/csv/master_table.csv', '../MEDprofileData', MEDclasses.MEDprofile, MEDclasses.MEDtab)
+    main('../../../data/mimic/csv/master_table.csv', '../MEDprofileData', MEDclasses)
     # main('../../data/mimic/csv/master_table.csv', '../../data/mimic/MEDprofileData')
     # main('../../data/meningioma/csv/master_table.csv', '../../data/meningioma/MEDprofileData')
