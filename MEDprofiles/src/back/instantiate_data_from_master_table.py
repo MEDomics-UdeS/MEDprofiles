@@ -6,11 +6,12 @@ The file 'create_classes_from_master_table' must have been executed before run.
 """
 
 import datetime
+import importlib
+
 import pandas as pd
 import pickle
 from tqdm import tqdm
 
-from MEDprofiles.MEDclasses import *
 from MEDprofiles.src.back.constant import *
 
 
@@ -22,6 +23,8 @@ def main(source_file, destination_file):
     :param destination_file: path to the generated pickle file
 
     """
+    # Import MEDclasses
+    from MEDclasses import MEDprofile, MEDtab
 
     # Get value from the master table
     df = pd.read_csv(source_file, header=None, low_memory=False)
@@ -81,5 +84,6 @@ def main(source_file, destination_file):
 
 
 if __name__ == '__main__':
-    main('../../data/mimic/csv/master_table.csv', '../../data/mimic/MEDprofileData')
+    main('../../../data/mimic/csv/master_table.csv', '../MEDprofileData')
+    # main('../../data/mimic/csv/master_table.csv', '../../data/mimic/MEDprofileData')
     # main('../../data/meningioma/csv/master_table.csv', '../../data/meningioma/MEDprofileData')
