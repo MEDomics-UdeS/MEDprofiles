@@ -117,7 +117,9 @@ def main(path_master_table, path_MEDclasses='../../MEDclasses'):
     # Create directory MEDclasses for classes
     directory_name = 'MEDclasses'
     if not os.path.exists(path_MEDclasses):
-        shutil.copytree('../../MEDclasses', path_MEDclasses)
+        path_pkg_MEDclasses = __import__('MEDprofiles').__path__[0]
+        path_pkg_MEDclasses = os.path.join(path_pkg_MEDclasses, directory_name)
+        shutil.copytree(path_pkg_MEDclasses, path_MEDclasses)
 
     # Create classes
     for class_ in classes_attributes_dict:
