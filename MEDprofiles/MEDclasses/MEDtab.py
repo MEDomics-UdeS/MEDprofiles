@@ -1,6 +1,6 @@
 import datetime
 from pydantic import validator
-from ..MEDclasses import *
+from MEDprofiles.MEDclasses import *
 from typing import Optional
 from MEDprofiles.src.back.constant import DATE_FORMAT
 
