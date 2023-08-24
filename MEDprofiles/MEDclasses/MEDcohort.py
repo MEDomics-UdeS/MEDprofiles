@@ -1,6 +1,6 @@
-from ..MEDclasses import *
 from typing import List
 from pydantic import BaseModel
+from .MEDprofile import MEDprofile
 from MEDprofiles.src.back.constant import *
 import pandas as pd
 
