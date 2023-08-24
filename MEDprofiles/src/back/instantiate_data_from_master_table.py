@@ -50,7 +50,7 @@ def main(source_file, destination_file, medclasses):
                 if field in FIXED_COLUMNS:
                     if med_tab.__fields__[field].type_ == datetime.date or med_tab.__fields__[field].type_ == \
                             datetime.datetime:
-                        med_tab.__setattr__(field, medclasses.medtab.parse_date(profile_data[field].iloc[row]))
+                        med_tab.__setattr__(field, med_tab.parse_date(profile_data[field].iloc[row]))
                     else:
                         med_tab.__setattr__(field, med_tab.__fields__[field].type_(profile_data[field].iloc[row]))
 

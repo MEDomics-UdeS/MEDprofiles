@@ -54,7 +54,7 @@ def create_class_file(path, class_name, attribute_list, base_class, directory_na
     class_path = os.path.join(path, class_name + ".py")
     with open(class_path, "w") as file:
         file.write("from typing import Optional\n")
-        file.write("from " + directory_name + ".MEDbaseObject import MEDbaseObject\n\n\n")
+        file.write("from .MEDbaseObject import MEDbaseObject\n\n\n")
         file.write("class " + class_name + "(" + base_class + "):\n")
         for attribute in attribute_list:
             if attribute[2]:
@@ -65,7 +65,7 @@ def create_class_file(path, class_name, attribute_list, base_class, directory_na
     file.close()
 
 
-def add_attributes_to_class(path, class_name, attribute_list, types_list, base_class):
+def add_attributes_to_class(path, class_name, attribute_list, types_list, base_class, import_attributes = True):
     """
     Add attributes from attribute_list to class file with class defined as class_name(base_class).
 
@@ -87,6 +87,11 @@ def add_attributes_to_class(path, class_name, attribute_list, types_list, base_c
     for line in data:
         if "pass" not in line:
             new_data.append(line)
+        # Check if the attributes are not already in the imports and import them if necessary
+        if line == "from ." + base_class + " import " + base_class + "\n" and "from ." + attribute_list[0] + " import "\
+                + attribute_list[0] + "\n" not in data and import_attributes:
+            for i in range(len(attribute_list)):
+                new_data.append("from ." + attribute_list[i] + " import " + attribute_list[i] + "\n")
         # Check if the attributes are not already in the class definition and add them at the right place
         if line == "class " + class_name + '(' + base_class + '):\n' and tab + attribute_list[0] + ": Optional[" + \
                 attribute_list[0] + "]\n" not in data:
@@ -130,16 +135,18 @@ def main(path_master_table, path_MEDclasses='../../MEDclasses'):
                             list(classes_attributes_dict.keys()), "MEDbaseObject")
 
     # Set constant attributes in MEDtab class
-    add_attributes_to_class(path_MEDclasses, "MEDtab", FIXED_COLUMNS[1:], FIXED_COLUMNS_TYPES[1:], "MEDbaseObject")
+    add_attributes_to_class(path_MEDclasses, "MEDtab", FIXED_COLUMNS[1:], FIXED_COLUMNS_TYPES[1:], "MEDbaseObject",
+                            False)
 
     # Create __init__ file
     init_path = os.path.join(path_MEDclasses, "__init__.py")
-    with open(init_path, "w") as file:
-        for class_ in list(classes_attributes_dict.keys()) + ["MEDtab", "MEDprofile", "MEDcohort", "MEDbaseObject"]:
-            file.write("from " + directory_name + "." + class_ + " import " + class_ + "\n")
+    with open(init_path, "a") as file:
+        for class_ in list(classes_attributes_dict.keys()):
+            file.write("from " + "." + class_ + " import " + class_ + "\n")
     file.close()
 
 
 if __name__ == '__main__':
-    main('../../data/mimic/csv/master_table.csv')
-    #main('../../data/meningioma/csv/master_table.csv')
+    main('master_table.csv', 'MEDclasses')
+    # main('../../data/mimic/csv/master_table.csv')
+    # main('../../data/meningioma/csv/master_table.csv')
