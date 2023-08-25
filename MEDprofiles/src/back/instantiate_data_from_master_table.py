@@ -14,7 +14,7 @@ from tqdm import tqdm
 from MEDprofiles.src.back.constant import *
 
 
-def main(source_file, destination_file, medclasses):
+def main(source_file, destination_file):
     """
     Instantiate a list of MEDPatient objects from a csv file in MEDPatientData file with pickle.
 
@@ -22,6 +22,8 @@ def main(source_file, destination_file, medclasses):
     :param destination_file: path to the generated pickle file
 
     """
+    medclasses_module = __import__('MEDclasses')
+
     # Get value from the master table
     df = pd.read_csv(source_file, header=None, low_memory=False)
     df.columns = df.iloc[INDEX_ATTRIBUTE_ROW]
@@ -35,13 +37,13 @@ def main(source_file, destination_file, medclasses):
     for patientID, i in zip(patient_id_list, tqdm(range(len(patient_id_list)))):
         # To set dynamically the required attributes (without knowing their names), we have to pass through a dictionary
         init = {FIXED_COLUMNS[0]: patientID}
-        med_profile = medclasses.MEDprofile(**init)
+        med_profile = medclasses_module.MEDprofile(**init)
         profile_data = df.where(df[FIXED_COLUMNS[0]] == patientID).dropna(how='all')
         med_tab_list = []
 
         # Create MEDTab object for each row
         for row in range(len(profile_data)):
-            med_tab = medclasses.MEDtab()
+            med_tab = medclasses_module.MEDtab()
 
             # For each attribute of MEDTab class
             for field in med_tab.__dict__:
@@ -56,7 +58,7 @@ def main(source_file, destination_file, medclasses):
 
                 # Other attributes are class objects
                 else:
-                    class_object = eval(field)()
+                    class_object = medclasses_module.__dict__[field]()
 
                     for attribute in class_object.__dict__:
                         # Class attributes follow the naming convention "className_attributeName"
@@ -77,10 +79,3 @@ def main(source_file, destination_file, medclasses):
     data_file = open(destination_file, 'ab')
     pickle.dump(med_profile_list, data_file)
     data_file.close()
-
-
-if __name__ == '__main__':
-    from MEDprofiles import MEDclasses
-    main('../../../data/mimic/csv/master_table.csv', '../MEDprofileData', MEDclasses)
-    # main('../../data/mimic/csv/master_table.csv', '../../data/mimic/MEDprofileData')
-    # main('../../data/meningioma/csv/master_table.csv', '../../data/meningioma/MEDprofileData')
