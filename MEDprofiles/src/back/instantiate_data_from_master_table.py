@@ -62,11 +62,12 @@ def main(source_file, destination_file):
 
                     for attribute in class_object.__dict__:
                         # Class attributes follow the naming convention "className_attributeName"
-                        null = profile_data[field + '_' + attribute].isnull().iloc[row]
-                        if not null:
-                            # Set the attribute with the good type
-                            class_object.__setattr__(attribute, class_object.__fields__[attribute].type_(
-                                profile_data[field + '_' + attribute].iloc[row]))
+                        if str(field + '_' + attribute) in profile_data.columns:
+                            null = profile_data[field + '_' + attribute].isnull().iloc[row]
+                            if not null:
+                                # Set the attribute with the good type
+                                class_object.__setattr__(attribute, class_object.__fields__[attribute].type_(
+                                    profile_data[field + '_' + attribute].iloc[row]))
 
                     med_tab.__setattr__(field, class_object)
             med_tab_list.append(med_tab)
