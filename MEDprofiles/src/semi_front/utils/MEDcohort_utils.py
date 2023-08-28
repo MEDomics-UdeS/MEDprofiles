@@ -6,7 +6,7 @@ Utils functions for manipulation of MEDcohort figure.
 
 import numpy as np
 
-from MEDprofiles.src.semi_front.MEDprofiles_utils import *
+from MEDprofiles.src.semi_front.utils.MEDprofiles_utils import *
 from MEDprofiles.src.back.constant import *
 
 

@@ -9,8 +9,9 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from MEDprofiles.MEDclasses import *
 from MEDprofiles.src.back.constant import FIXED_COLUMNS, MARKERS, DATE_FORMAT
+
+medclasses_module = __import__('MEDclasses')
 
 
 def get_nb_rows(classes_attributes_dict):
@@ -30,7 +31,7 @@ def get_nb_rows(classes_attributes_dict):
             nb_row += 1
         elif classes_attributes_dict[cls][1] == 'complete':
             if len(classes_attributes_dict[cls][0]) == 0:
-                nb_row += len(eval(cls).__fields__)
+                nb_row += len(get_class_fields(cls))
             else:
                 nb_row += len(classes_attributes_dict[cls][0])
     return nb_row
@@ -107,7 +108,7 @@ def get_class_fields(class_):
     :return: List of the class attributes.
 
     """
-    return list(eval(class_).__fields__)
+    return list(medclasses_module.__dict__[class_].__fields__)
 
 
 def scatter_and_annotate_point(axes, index, x, y, color, size, marker, data_text, index_text, points, annotations):
@@ -383,7 +384,7 @@ def set_time_relative_to_class_in_profile(df_profile, cls):
 
     # Get column_names relative to class
     column_names = []
-    for attribute in eval(cls).__fields__:
+    for attribute in get_class_fields(cls):
         column_names.append(str(cls + '_' + attribute))
 
     # Case there is no value for the selected class
