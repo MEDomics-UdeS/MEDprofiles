@@ -2,7 +2,8 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 from MEDprofiles.src.back.constant import FIXED_COLUMNS
-from MEDprofiles.src.semi_front.utils.MEDprofiles_utils import center_data_in_profile_plot, display_annotations, display_profile, r_pressed_in_profile, set_plot
+from MEDprofiles.src.semi_front.utils.MEDprofiles_utils import center_data_in_profile_plot, display_annotations, \
+    display_profile, r_pressed_in_profile, set_plot
 
 
 def button_pressed(event):

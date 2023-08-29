@@ -9,6 +9,8 @@ import numpy as np
 from MEDprofiles.src.semi_front.utils.MEDprofiles_utils import *
 from MEDprofiles.src.back.constant import *
 
+medclasses_module = __import__('MEDclasses')
+
 
 def display_cohort(axes, df_cohort, classes_attributes_dict, dict_points, dict_annotations, xaxis=[FIXED_COLUMNS[1]]):
     """
@@ -283,7 +285,7 @@ def set_time_relative_to_class_in_cohort(df_cohort, cls):
 
     # Get column_names relative to class
     column_names = []
-    for attribute in eval(cls).__fields__:
+    for attribute in get_class_fields(cls):
         column_names.append(str(cls + '_' + attribute))
 
     # Set relative date to the first date
@@ -413,7 +415,7 @@ def get_patient_list_for_class_values_at_date(df_cohort, class_, date):
 
     """
     # Get not nan values in dataframe
-    for attribute in eval(class_).__fields__:
+    for attribute in get_class_fields(class_):
         column_name = str(class_ + '_' + attribute)
     df_cohort_not_na = df_cohort.dropna(subset=[column_name]).copy()
 
@@ -593,7 +595,7 @@ def t_pressed(event, axes, df_cohort, classes_attributes_dict, dict_points, dict
     update_plot(axes, df_cohort, classes_attributes_dict, dict_points, dict_annotations, dict_selected_points,
                 dict_selected_annotations, xaxis)
 
-
+'''
 def bin_pressed(df_cohort, classes_attributes_dict, frequency, subplot_height, plot_width, colors, dict_bin_points,
                 dict_bin_annotations, button_pressed_function):
     """
@@ -622,8 +624,8 @@ def bin_pressed(df_cohort, classes_attributes_dict, frequency, subplot_height, p
     scatter_bin_points(axes_bin, compact_dict, data_dict, dict_bin_points, dict_bin_annotations)
     fig_bin.canvas.mpl_connect('button_press_event', button_pressed_function)
     fig_bin.suptitle(f'MEDcohort in bin ({frequency}) composed by {len(set(df_cohort.index))} patients', fontsize=16)
-
-
+'''
+'''
 def p_pressed(df_cohort, classes_attributes_dict, subplot_height, plot_width, xaxis, colors, dict_selected_points,
               dict_figure_profile, button_pressed_func, key_pressed_func, close_func):
     """
@@ -660,3 +662,4 @@ def p_pressed(df_cohort, classes_attributes_dict, subplot_height, plot_width, xa
         fig_profile.canvas.mpl_connect('key_press_event', key_pressed_func)
         fig_profile.canvas.mpl_connect('close_event', close_func)
         fig_profile.suptitle(f'MEDprofile of patient {patient_id}', fontsize=16)
+'''
