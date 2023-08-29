@@ -4,6 +4,7 @@
 /data/mimic/csv/*
 /data/mimic/pretrained_bert_tf
 /MEDclasses/
+/MEDclasses/__pycache__/
 /notebooks/.ipynb_checkpoints/
 /output/*.csv
 !.gitkeep
