@@ -1,11 +1,3 @@
-./data/meningioma/__pycache__
-./data/mimic/__pycache__
-./MEDprofiles/src/__pycache__
-./MEDprofiles/src/semi_front/__pycache__
-./MEDprofiles/src/semi_front/utils/__pycache__
-./MEDprofiles/src/back/__pycache__
-./MEDprofiles/MEDclasses/__pycache__
-./MEDprofiles/__pycache__
 /data/meningioma/MEDprofiles_bin
 /data/meningioma/csv/*
 /data/mimic/MEDprofiles_bin
