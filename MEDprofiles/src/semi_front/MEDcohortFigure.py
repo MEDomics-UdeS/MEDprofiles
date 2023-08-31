@@ -109,6 +109,8 @@ class MEDcohortFigure:
         :return:
 
         """
+        if not os.path.exists(folder):
+            os.mkdir(folder)
         for time_point in set(self.cohort_df[FIXED_COLUMNS[2]].dropna()):
             self.cohort_df[self.cohort_df[FIXED_COLUMNS[2]] == time_point].dropna(axis=1, how='all').drop(
                 FIXED_COLUMNS[2], axis=1).to_csv(os.path.join(folder, 'time_point_' + str(int(time_point)) + '.csv'))
