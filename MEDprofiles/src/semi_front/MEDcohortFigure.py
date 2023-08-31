@@ -1,10 +1,12 @@
+import os.path
+
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 from MEDprofiles.src.back.constant import FIXED_COLUMNS
 from MEDprofiles.src.semi_front.BinFigure import BinFigure
 from MEDprofiles.src.semi_front.MEDprofileFigure import MEDprofileFigure
-from MEDprofiles.src.semi_front.utils.MEDcohort_utils import delete_pressed, display_attributes_values, display_cohort,\
+from MEDprofiles.src.semi_front.utils.MEDcohort_utils import delete_pressed, display_attributes_values, display_cohort, \
     display_patient_id_and_data, r_pressed, t_pressed
 from MEDprofiles.src.semi_front.utils.MEDprofiles_utils import set_plot
 
@@ -98,3 +100,15 @@ class MEDcohortFigure:
                 frequency = 'month'
             BinFigure(self.classes_attributes_dict, self.cohort_df, frequency, self.plot_width, self.subplot_height)
         plt.gcf().canvas.draw_idle()
+
+    def generate_static_csv(self, folder):
+        """
+        Generate static csv files from attributed time points in cohort dataframe.
+
+        :param folder:
+        :return:
+
+        """
+        for time_point in set(self.cohort_df[FIXED_COLUMNS[2]].dropna()):
+            self.cohort_df[self.cohort_df[FIXED_COLUMNS[2]] == time_point].dropna(axis=1, how='all').drop(
+                FIXED_COLUMNS[2], axis=1).to_csv(os.path.join(folder, 'time_point_' + str(int(time_point)) + '.csv'))
