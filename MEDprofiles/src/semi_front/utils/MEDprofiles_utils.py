@@ -492,9 +492,9 @@ def is_time_relative_to_selected_class(event, xaxis, df):
     # Check if all selected class points for all patients are at 0
     min_point_patient = []
     for patient_id in set(df.index):
-        if len(df.loc[patient_id].dropna(subset=column_names, how='all')) > 0:
+        if len(df.loc[[patient_id]].dropna(subset=column_names, how='all')) > 0:
             min_point_patient.append(
-                min(df.loc[patient_id].dropna(subset=column_names, how='all')['Days_from_relative_date']))
+                min(df.loc[[patient_id]].dropna(subset=column_names, how='all')['Days_from_relative_date']))
 
     return all(x == 0 for x in min_point_patient)
 

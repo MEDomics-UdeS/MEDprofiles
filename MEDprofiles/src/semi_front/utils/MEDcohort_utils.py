@@ -293,12 +293,12 @@ def set_time_relative_to_class_in_cohort(df_cohort, cls):
 
     for patient_id in set(df_cohort.index):
         df_profile = df_cohort.loc[[patient_id]]
-        relative_time_difference = min(df_profile.dropna(subset=column_names, how='all')['Date']) - first_date
-        df_cohort.loc[patient_id, 'Relative_date'] = df_profile['Date'] - relative_time_difference
+        if not df_profile.dropna(subset=column_names, how='all')['Date'].empty:
+            relative_time_difference = min(df_profile.dropna(subset=column_names, how='all')['Date']) - first_date
+            df_cohort.loc[patient_id, ['Relative_date']] = df_profile['Date'] - relative_time_difference
 
-    df_cohort['Days_from_relative_date'] = df_cohort['Relative_date'] - first_date
-    df_cohort['Days_from_relative_date'] = pd.to_numeric(df_cohort['Days_from_relative_date'].dt.days,
-                                                         downcast='integer')
+    df_cohort['Days_from_relative_date'] = pd.to_datetime(df_cohort['Relative_date']) - first_date
+    df_cohort['Days_from_relative_date'] = df_cohort['Days_from_relative_date'].apply(lambda x: x.days)
 
 
 def is_class_associated_to_time_point(class_, dict_class_time_points):
@@ -379,10 +379,12 @@ def center_data_in_cohort(dict_points, dict_selected_points):
     list_x = []
     for patient_id in dict_points.keys():
         for point in dict_points[patient_id]:
-            list_x.append(point.get_offsets().data[0][0])
+            if pd.notna(point.get_offsets().data[0][0]):
+                list_x.append(point.get_offsets().data[0][0])
     for patient_id in dict_selected_points.keys():
         for point in dict_selected_points[patient_id]:
-            list_x.append(point.get_offsets().data[0][0])
+            if pd.notna(point.get_offsets().data[0][0]):
+                list_x.append(point.get_offsets().data[0][0])
     distance_to_edge = 10 * (max(list_x) - min(list_x)) / len(list_x)
     plt.xlim(min(list_x) - distance_to_edge, max(list_x) + distance_to_edge)
 
@@ -594,72 +596,3 @@ def t_pressed(event, axes, df_cohort, classes_attributes_dict, dict_points, dict
     legend_points.append(set_legend(fig, df_cohort))
     update_plot(axes, df_cohort, classes_attributes_dict, dict_points, dict_annotations, dict_selected_points,
                 dict_selected_annotations, xaxis)
-
-'''
-def bin_pressed(df_cohort, classes_attributes_dict, frequency, subplot_height, plot_width, colors, dict_bin_points,
-                dict_bin_annotations, button_pressed_function):
-    """
-    Create bin figure according to frequency.
-
-    :param df_cohort: Pandas Dataframe of a MEDcohort.
-    :param classes_attributes_dict: Dict associating classes to the attributes we want to display and format (one row
-           for the class or one row by attributes to display in the class). Keys are class names and values are tuples
-           (list of attributes, format), with format equals to 'compact' or 'complete'.
-    :param frequency: "Month" or "Year" depending on the frequency we want to use to create bins.
-    :param subplot_height: Desired subplot height for the bin figure.
-    :param plot_width: Desired plot width for the bin figure.
-    :param colors: A list of colors, with at least one per class to display.
-    :param dict_bin_points: Dict of scatter points representing a bin of patients.
-    :param dict_bin_annotations: Dict of annotations representing a bin of patients.
-    :param button_pressed_function: Function associated to the "button_pressed" matplotlib event.
-
-    :return:
-
-    """
-    compact_dict = {}
-    for cls in classes_attributes_dict:
-        compact_dict[cls] = ([], 'compact')
-    data_dict = set_in_bin(df_cohort, compact_dict, frequency)
-    fig_bin, axes_bin = set_plot(subplot_height, plot_width, compact_dict, colors)
-    scatter_bin_points(axes_bin, compact_dict, data_dict, dict_bin_points, dict_bin_annotations)
-    fig_bin.canvas.mpl_connect('button_press_event', button_pressed_function)
-    fig_bin.suptitle(f'MEDcohort in bin ({frequency}) composed by {len(set(df_cohort.index))} patients', fontsize=16)
-'''
-'''
-def p_pressed(df_cohort, classes_attributes_dict, subplot_height, plot_width, xaxis, colors, dict_selected_points,
-              dict_figure_profile, button_pressed_func, key_pressed_func, close_func):
-    """
-    Called when p is pressed on cohort figure.
-    Create profile figures from selected points.
-
-    :param df_cohort: Pandas Dataframe of a MEDcohort.
-    :param classes_attributes_dict: Dict associating classes to the attributes we want to display and format (one row
-           for the class or one row by attributes to display in the class). Keys are class names and values are tuples
-           (list of attributes, format), with format equals to 'compact' or 'complete'.
-    :param subplot_height: Desired subplot height for the bin figure.
-    :param plot_width: Desired plot width for the bin figure.
-    :param xaxis: From which abscissa is displayed the data.
-    :param colors: A list of colors, with at least one per class to display.
-    :param dict_selected_points: Dict associating MEDprofile PatientID to the list of corresponding points in Axes and
-           corresponding to the selected points in the plot.
-    :param dict_figure_profile: Dict associating MEDprofiles PatientID to their figure.
-    :param button_pressed_func: Function associated to the "button_pressed" matplotlib event.
-    :param key_pressed_func: Function associated to the "key_pressed" matplotlib event.
-    :param close_func: Function associated to the "close_event" matplotlib event.
-
-    :return:
-
-    """
-    for patient_id in dict_selected_points.keys():
-        df_profile = df_cohort.loc[[patient_id]].copy()
-        fig_profile, axes_profile = set_plot(subplot_height, plot_width, classes_attributes_dict, colors)
-        points, annotations = display_profile(axes_profile, df_profile, classes_attributes_dict)
-        dict_figure_profile[plt.gcf().number] = (patient_id,
-                                                 {'profile_df': df_profile, 'profile_points': {patient_id: points},
-                                                  'profile_annotations': {patient_id: annotations},
-                                                  'profile_axes': axes_profile, 'profile_xaxis': xaxis.copy()})
-        fig_profile.canvas.mpl_connect('button_press_event', button_pressed_func)
-        fig_profile.canvas.mpl_connect('key_press_event', key_pressed_func)
-        fig_profile.canvas.mpl_connect('close_event', close_func)
-        fig_profile.suptitle(f'MEDprofile of patient {patient_id}', fontsize=16)
-'''
