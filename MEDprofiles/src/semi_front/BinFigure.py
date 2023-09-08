@@ -6,6 +6,15 @@ from MEDprofiles.src.semi_front.utils.MEDprofiles_utils import display_annotatio
 
 
 def set_classes_dict_in_compact_format(classes_attributes_dict):
+    """
+    Set classes_attributes_dict classes in compact format.
+
+    :param classes_attributes_dict: A dictionary associating classes to a tuple containing the lis of the attributes
+                                    we want to display and the format that may be "compact" or "complete".
+
+    :return:
+
+    """
     compact_dict = {}
     for cls in classes_attributes_dict:
         compact_dict[cls] = ([], 'compact')
@@ -13,13 +22,23 @@ def set_classes_dict_in_compact_format(classes_attributes_dict):
 
 
 def button_pressed(event):
+    """
+    Show or hide annotations if the event occurs.
+
+    :param event: A Matplolib event.
+
+    :return:
+
+    """
     if event.button == mpl.backend_bases.MouseButton.LEFT or event.button == mpl.backend_bases.MouseButton.RIGHT:
         display_annotations(event)
         plt.gcf().canvas.draw_idle()
 
 
 class BinFigure:
-
+    """
+    Class representing an interactive figure for a bin of MEDcohort.
+    """
     def __init__(self, classes_attributes_dict, cohort_df, frequency, plot_width=10, subplot_height=1):
         self.classes_attributes_dict = set_classes_dict_in_compact_format(classes_attributes_dict)
         self.cohort_df = cohort_df

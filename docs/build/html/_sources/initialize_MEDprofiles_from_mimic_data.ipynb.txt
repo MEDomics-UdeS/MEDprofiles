@@ -1,0 +1,134 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true,
+    "pycharm": {
+     "name": "#%% md\n"
+    }
+   },
+   "source": [
+    "# Initialize MEDprofiles from MIMIC data\n",
+    "\n",
+    "This notebook demonstrates how to create the MEDclasses and instantiate the MIMIC data from the master table as MEDprofiles.\n",
+    "\n",
+    "To execute this notebook, you must have created the MIMIC master table by running the *data/mimic/create_master_table.py* script."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "pycharm": {
+     "name": "#%% md\n"
+    }
+   },
+   "source": [
+    "## 1. Import the necessary functions from the MEDprofile's package"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "pycharm": {
+     "is_executing": true,
+     "name": "#%%\n"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "import os\n",
+    "\n",
+    "# Set the working directory\n",
+    "os.chdir('..')\n",
+    "from MEDprofiles.src.back import create_classes_from_master_table, instantiate_data_from_master_table"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "pycharm": {
+     "name": "#%% md\n"
+    }
+   },
+   "source": [
+    "## 2. Create the MEDclasses from the MIMIC master table\n",
+    "\n",
+    "The following cell should create a \"MEDclasses\" folder in the project's root directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "master_table_path = 'data/mimic/csv/master_table.csv'\n",
+    "MEDclasses_folder_path = 'MEDclasses'\n",
+    "create_classes_from_master_table.main(master_table_path, MEDclasses_folder_path)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "pycharm": {
+     "name": "#%% md\n"
+    }
+   },
+   "source": [
+    "## 3. Instantiate the master table data as MEDprofiles\n",
+    "\n",
+    "The following cell should create a \"MEDprofiles_bin\" file under the *data/mimic* folder."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "pycharm": {
+     "is_executing": true,
+     "name": "#%%\n"
+    }
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      " 99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏ | 99/100 [10:50<00:06,  6.57s/it]\n"
+     ]
+    }
+   ],
+   "source": [
+    "MEDprofiles_bin_path = 'data/mimic/MEDprofiles_bin'\n",
+    "instantiate_data_from_master_table.main(master_table_path, MEDprofiles_bin_path)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}

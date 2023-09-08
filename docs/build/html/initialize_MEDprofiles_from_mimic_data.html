@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Initialize MEDprofiles from MIMIC data &mdash; MEDprofiles  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/nbsphinx-code-cells.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Display a MEDprofile figure" href="display_MEDprofile_figure.html" />
+    <link rel="prev" title="Notebooks" href="notebooks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/MEDprofiles_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install_package.html">Use the MEDprofiles package in another project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_repo.html">Use the MEDprofiles package inside this repository</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Instructions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="notebooks.html">Notebooks</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="notebooks.html#initialize-medprofiles-from-mimic-data">Initialize MEDprofiles from MIMIC data</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Initialize MEDprofiles from MIMIC data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#1.-Import-the-necessary-functions-from-the-MEDprofile's-package">1. Import the necessary functions from the MEDprofile’s package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#2.-Create-the-MEDclasses-from-the-MIMIC-master-table">2. Create the MEDclasses from the MIMIC master table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#3.-Instantiate-the-master-table-data-as-MEDprofiles">3. Instantiate the master table data as MEDprofiles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#display-medprofile-figure">Display MEDprofile figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks.html#display-medcohort-figure">Display MEDcohort figure</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MEDclasses.html">MEDclasses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_classes.html">Semi-front - Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_utils.html">Semi-front - Utils Functions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MEDprofiles</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="notebooks.html">Notebooks</a></li>
+      <li class="breadcrumb-item active">Initialize MEDprofiles from MIMIC data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/initialize_MEDprofiles_from_mimic_data.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Initialize-MEDprofiles-from-MIMIC-data">
+<h1>Initialize MEDprofiles from MIMIC data<a class="headerlink" href="#Initialize-MEDprofiles-from-MIMIC-data" title="Permalink to this heading"></a></h1>
+<p>This notebook demonstrates how to create the MEDclasses and instantiate the MIMIC data from the master table as MEDprofiles.</p>
+<p>To execute this notebook, you must have created the MIMIC master table by running the <em>data/mimic/create_master_table.py</em> script.</p>
+<section id="1.-Import-the-necessary-functions-from-the-MEDprofile's-package">
+<h2>1. Import the necessary functions from the MEDprofile’s package<a class="headerlink" href="#1.-Import-the-necessary-functions-from-the-MEDprofile's-package" title="Permalink to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Set the working directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">MEDprofiles.src.back</span> <span class="kn">import</span> <span class="n">create_classes_from_master_table</span><span class="p">,</span> <span class="n">instantiate_data_from_master_table</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="2.-Create-the-MEDclasses-from-the-MIMIC-master-table">
+<h2>2. Create the MEDclasses from the MIMIC master table<a class="headerlink" href="#2.-Create-the-MEDclasses-from-the-MIMIC-master-table" title="Permalink to this heading"></a></h2>
+<p>The following cell should create a “MEDclasses” folder in the project’s root directory.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">master_table_path</span> <span class="o">=</span> <span class="s1">&#39;data/mimic/csv/master_table.csv&#39;</span>
+<span class="n">MEDclasses_folder_path</span> <span class="o">=</span> <span class="s1">&#39;MEDclasses&#39;</span>
+<span class="n">create_classes_from_master_table</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">master_table_path</span><span class="p">,</span> <span class="n">MEDclasses_folder_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="3.-Instantiate-the-master-table-data-as-MEDprofiles">
+<h2>3. Instantiate the master table data as MEDprofiles<a class="headerlink" href="#3.-Instantiate-the-master-table-data-as-MEDprofiles" title="Permalink to this heading"></a></h2>
+<p>The following cell should create a “MEDprofiles_bin” file under the <em>data/mimic</em> folder.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MEDprofiles_bin_path</span> <span class="o">=</span> <span class="s1">&#39;data/mimic/MEDprofiles_bin&#39;</span>
+<span class="n">instantiate_data_from_master_table</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">master_table_path</span><span class="p">,</span> <span class="n">MEDprofiles_bin_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+ 99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏ | 99/100 [10:50&lt;00:06,  6.57s/it]
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="notebooks.html" class="btn btn-neutral float-left" title="Notebooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="display_MEDprofile_figure.html" class="btn btn-neutral float-right" title="Display a MEDprofile figure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Sarah DENIS.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

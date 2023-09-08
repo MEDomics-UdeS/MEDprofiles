@@ -10,7 +10,8 @@ def button_pressed(event):
     """
     Show or hide annotations if the event occurs.
 
-    :param event:
+    :param event: A Matplolib event.
+
     :return:
 
     """

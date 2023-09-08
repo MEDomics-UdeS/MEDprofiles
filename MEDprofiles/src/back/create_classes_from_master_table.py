@@ -144,9 +144,3 @@ def main(path_master_table, path_MEDclasses='../../MEDclasses'):
         for class_ in list(classes_attributes_dict.keys()):
             file.write("from " + "." + class_ + " import " + class_ + "\n")
     file.close()
-
-
-if __name__ == '__main__':
-    main('master_table.csv', 'MEDclasses')
-    # main('../../data/mimic/csv/master_table.csv')
-    # main('../../data/meningioma/csv/master_table.csv')

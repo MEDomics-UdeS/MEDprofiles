@@ -12,7 +12,9 @@ from MEDprofiles.src.semi_front.utils.MEDprofiles_utils import set_plot
 
 
 class MEDcohortFigure:
-
+    """
+    Class representing an interactive figure for a MEDcohort.
+    """
     def __init__(self, classes_attributes_dict, cohort_df, plot_width=10, subplot_height=1, xaxis=[FIXED_COLUMNS[1]]):
         self.classes_attributes_dict = classes_attributes_dict
         self.cohort_df = cohort_df

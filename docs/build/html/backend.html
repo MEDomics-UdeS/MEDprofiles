@@ -20,7 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Semi-front" href="semi_front.html" />
+    <link rel="next" title="Semi-front - Classes" href="semi_front_classes.html" />
     <link rel="prev" title="MEDclasses" href="MEDclasses.html" /> 
 </head>
 
@@ -46,9 +46,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="meningioma_dataset.html">Meningioma dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mimic_dataset.html">MIMIC-IV dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_package.html">Use the MEDprofiles package in another project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_repo.html">Use the MEDprofiles package inside this repository</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
@@ -60,20 +59,21 @@
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MEDclasses.html">MEDclasses</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Backend</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-src.back.create_classes_from_master_table">Create classes from master table</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.back.create_classes_from_master_table.add_attributes_to_class"><code class="docutils literal notranslate"><span class="pre">add_attributes_to_class()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.back.create_classes_from_master_table.create_class_file"><code class="docutils literal notranslate"><span class="pre">create_class_file()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.back.create_classes_from_master_table.get_classes_from_df"><code class="docutils literal notranslate"><span class="pre">get_classes_from_df()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.back.create_classes_from_master_table.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-MEDprofiles.src.back.create_classes_from_master_table">Create classes from master table</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MEDprofiles.src.back.create_classes_from_master_table.add_attributes_to_class"><code class="docutils literal notranslate"><span class="pre">add_attributes_to_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MEDprofiles.src.back.create_classes_from_master_table.create_class_file"><code class="docutils literal notranslate"><span class="pre">create_class_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MEDprofiles.src.back.create_classes_from_master_table.get_classes_from_df"><code class="docutils literal notranslate"><span class="pre">get_classes_from_df()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MEDprofiles.src.back.create_classes_from_master_table.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-src.back.instantiate_data_from_master_table">Instantiate classes from master table</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.back.instantiate_data_from_master_table.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-MEDprofiles.src.back.instantiate_data_from_master_table">Instantiate classes from master table</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MEDprofiles.src.back.instantiate_data_from_master_table.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="semi_front.html">Semi-front</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_classes.html">Semi-front - Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_utils.html">Semi-front - Utils Functions</a></li>
 </ul>
 
         </div>
@@ -102,12 +102,12 @@
              
   <section id="backend">
 <h1>Backend<a class="headerlink" href="#backend" title="Permalink to this heading"></a></h1>
-<section id="module-src.back.create_classes_from_master_table">
-<span id="create-classes-from-master-table"></span><h2>Create classes from master table<a class="headerlink" href="#module-src.back.create_classes_from_master_table" title="Permalink to this heading"></a></h2>
+<section id="module-MEDprofiles.src.back.create_classes_from_master_table">
+<span id="create-classes-from-master-table"></span><h2>Create classes from master table<a class="headerlink" href="#module-MEDprofiles.src.back.create_classes_from_master_table" title="Permalink to this heading"></a></h2>
 <p>Take a master table as entry and create dynamically classes based on the table attributes using pydantic package.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="src.back.create_classes_from_master_table.add_attributes_to_class">
-<span class="sig-prename descclassname"><span class="pre">src.back.create_classes_from_master_table.</span></span><span class="sig-name descname"><span class="pre">add_attributes_to_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.back.create_classes_from_master_table.add_attributes_to_class" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.src.back.create_classes_from_master_table.add_attributes_to_class">
+<span class="sig-prename descclassname"><span class="pre">MEDprofiles.src.back.create_classes_from_master_table.</span></span><span class="sig-name descname"><span class="pre">add_attributes_to_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.src.back.create_classes_from_master_table.add_attributes_to_class" title="Permalink to this definition"></a></dt>
 <dd><p>Add attributes from attribute_list to class file with class defined as class_name(base_class).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -126,8 +126,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="src.back.create_classes_from_master_table.create_class_file">
-<span class="sig-prename descclassname"><span class="pre">src.back.create_classes_from_master_table.</span></span><span class="sig-name descname"><span class="pre">create_class_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.back.create_classes_from_master_table.create_class_file" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.src.back.create_classes_from_master_table.create_class_file">
+<span class="sig-prename descclassname"><span class="pre">MEDprofiles.src.back.create_classes_from_master_table.</span></span><span class="sig-name descname"><span class="pre">create_class_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.src.back.create_classes_from_master_table.create_class_file" title="Permalink to this definition"></a></dt>
 <dd><p>Define a class in a new file in a specific path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Param<span class="colon">:</span></dt>
@@ -147,8 +147,8 @@ boolean) if boolean is true, the attribute is optional.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="src.back.create_classes_from_master_table.get_classes_from_df">
-<span class="sig-prename descclassname"><span class="pre">src.back.create_classes_from_master_table.</span></span><span class="sig-name descname"><span class="pre">get_classes_from_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.back.create_classes_from_master_table.get_classes_from_df" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.src.back.create_classes_from_master_table.get_classes_from_df">
+<span class="sig-prename descclassname"><span class="pre">MEDprofiles.src.back.create_classes_from_master_table.</span></span><span class="sig-name descname"><span class="pre">get_classes_from_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.src.back.create_classes_from_master_table.get_classes_from_df" title="Permalink to this definition"></a></dt>
 <dd><p>Create a classes dict from a pandas dataframe. DataFrame columns names must be like ClassName_ClassAttribute and
 must contain a row for column types.</p>
 <dl class="field-list simple">
@@ -163,12 +163,15 @@ class_attribute_type, True).</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="src.back.create_classes_from_master_table.main">
-<span class="sig-prename descclassname"><span class="pre">src.back.create_classes_from_master_table.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.back.create_classes_from_master_table.main" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.src.back.create_classes_from_master_table.main">
+<span class="sig-prename descclassname"><span class="pre">MEDprofiles.src.back.create_classes_from_master_table.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_master_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_MEDclasses</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'../../MEDclasses'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.src.back.create_classes_from_master_table.main" title="Permalink to this definition"></a></dt>
 <dd><p>Main function for class creation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>arg</strong> – Path to the master table from which we create the classes.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_master_table</strong> – Path to the master table from which we create the classes.</p></li>
+<li><p><strong>path_MEDclasses</strong> – Path to the folder where we create the MEDclasses.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p></p>
@@ -177,13 +180,13 @@ class_attribute_type, True).</p>
 </dd></dl>
 
 </section>
-<section id="module-src.back.instantiate_data_from_master_table">
-<span id="instantiate-classes-from-master-table"></span><h2>Instantiate classes from master table<a class="headerlink" href="#module-src.back.instantiate_data_from_master_table" title="Permalink to this heading"></a></h2>
+<section id="module-MEDprofiles.src.back.instantiate_data_from_master_table">
+<span id="instantiate-classes-from-master-table"></span><h2>Instantiate classes from master table<a class="headerlink" href="#module-MEDprofiles.src.back.instantiate_data_from_master_table" title="Permalink to this heading"></a></h2>
 <p>Take a master table as entry and instantiate the data.
 The file ‘create_classes_from_master_table’ must have been executed before run.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="src.back.instantiate_data_from_master_table.main">
-<span class="sig-prename descclassname"><span class="pre">src.back.instantiate_data_from_master_table.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.back.instantiate_data_from_master_table.main" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.src.back.instantiate_data_from_master_table.main">
+<span class="sig-prename descclassname"><span class="pre">MEDprofiles.src.back.instantiate_data_from_master_table.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.src.back.instantiate_data_from_master_table.main" title="Permalink to this definition"></a></dt>
 <dd><p>Instantiate a list of MEDPatient objects from a csv file in MEDPatientData file with pickle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -203,7 +206,7 @@ The file ‘create_classes_from_master_table’ must have been executed before r
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="MEDclasses.html" class="btn btn-neutral float-left" title="MEDclasses" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="semi_front.html" class="btn btn-neutral float-right" title="Semi-front" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="semi_front_classes.html" class="btn btn-neutral float-right" title="Semi-front - Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
