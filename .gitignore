@@ -1,8 +1,10 @@
-/data/meningioma/MEDprofileData
+/data/meningioma/MEDprofiles_bin
 /data/meningioma/csv/*
-/data/mimic/MEDprofileData
+/data/mimic/MEDprofiles_bin
 /data/mimic/csv/*
 /data/mimic/pretrained_bert_tf
-/Not_in_project/
+/MEDclasses/
+/notebooks/.ipynb_checkpoints/
 /output/*.csv
 !.gitkeep
+

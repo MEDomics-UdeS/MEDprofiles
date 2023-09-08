@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Notebooks" href="notebooks.html" />
-    <link rel="prev" title="MIMIC-IV dataset" href="mimic_dataset.html" /> 
+    <link rel="prev" title="Use the MEDprofiles package inside this repository" href="install_repo.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,18 +46,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="meningioma_dataset.html">Meningioma dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mimic_dataset.html">MIMIC-IV dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_package.html">Use the MEDprofiles package in another project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_repo.html">Use the MEDprofiles package inside this repository</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#create-the-master-table">1. Create the master table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#specify-the-constants">2. Specify the constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-the-classes-matching-your-master-table">3. Create the classes matching your master table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#instantiate-the-master-table-data-as-medprofiles-objects">4. Instantiate the master table data as MEDprofiles objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#once-you-have-completed-these-steps">5. Once you have completed these steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instantiate-the-master-table-data-as-medprofiles">2. Instantiate the master table data as MEDprofiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#display-and-manipulate-a-medprofile-figure">3. Display and manipulate a MEDprofile figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#display-manipulate-and-generate-static-csv-files-from-a-medcohort-figure">4. Display, manipulate and generate static CSV files from a MEDcohort figure</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">Notebooks</a></li>
@@ -67,7 +65,8 @@
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MEDclasses.html">MEDclasses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
-<li class="toctree-l1"><a class="reference internal" href="semi_front.html">Semi-front</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_classes.html">Semi-front - Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_utils.html">Semi-front - Utils Functions</a></li>
 </ul>
 
         </div>
@@ -96,56 +95,22 @@
              
   <section id="instructions">
 <h1>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading"></a></h1>
-<p>To use the package, follow these steps:</p>
+<p>To use the repository, follow these steps:</p>
 <section id="create-the-master-table">
 <h2>1. Create the master table<a class="headerlink" href="#create-the-master-table" title="Permalink to this heading"></a></h2>
 <p>Start by running the <em>create_master_table.ipynb</em> file located in the folder corresponding to the dataset you wish to use.</p>
 </section>
-<section id="specify-the-constants">
-<h2>2. Specify the constants<a class="headerlink" href="#specify-the-constants" title="Permalink to this heading"></a></h2>
-<p>Open the <em>src/back/constant.py</em> file and comment/uncomment the lines that correspond to your dataset. This step helps in setting the appropriate constants.</p>
+<section id="instantiate-the-master-table-data-as-medprofiles">
+<h2>2. Instantiate the master table data as MEDprofiles<a class="headerlink" href="#instantiate-the-master-table-data-as-medprofiles" title="Permalink to this heading"></a></h2>
+<p>Follow the <em>notebooks/initialize_MEDprofiles_from_mimic_data.ipynb</em> file instructions. This notebook illustrate the process with the mimic data. You may need to make some adjustments if you work with the meningioma dataset. At the end of the execution you must have a MEDclasses folder created at the root of your project and a binary file containing MEDprofiles data located at <em>data/mimic/MEDprofiles_bin</em>.</p>
 </section>
-<section id="create-the-classes-matching-your-master-table">
-<h2>3. Create the classes matching your master table<a class="headerlink" href="#create-the-classes-matching-your-master-table" title="Permalink to this heading"></a></h2>
-<p>Run the main function in the <em>src/back/create_classes_from_master_table.py</em> file, providing the path to the master table file as a parameter.</p>
-<ul class="simple">
-<li><p>For the Meningioma dataset, the file location is <em>../../data/meningioma/csv/master_table.csv</em>.</p></li>
-<li><p>For the MIMIC-IV dataset, the file location is <em>../../data/mimic/csv/master_table.csv</em>.</p></li>
-</ul>
-<p>The classes will be created under the MEDclasses folder. Initially, the folder contains definitions for four classes:</p>
-<ul class="simple">
-<li><p>MEDbaseObject</p></li>
-<li><p>MEDcohort</p></li>
-<li><p>MEDprofile</p></li>
-<li><p>MEDtab</p></li>
-</ul>
-<p>Ensure that the MEDtab definition is empty (i.e., contains only “pass”) because the creation of classes will modify and complete the MEDtab attributes.</p>
+<section id="display-and-manipulate-a-medprofile-figure">
+<h2>3. Display and manipulate a MEDprofile figure<a class="headerlink" href="#display-and-manipulate-a-medprofile-figure" title="Permalink to this heading"></a></h2>
+<p>Follow the <em>notebooks/display_MEDprofile_figure.ipynb</em> file instructions.</p>
 </section>
-<section id="instantiate-the-master-table-data-as-medprofiles-objects">
-<h2>4. Instantiate the master table data as MEDprofiles objects<a class="headerlink" href="#instantiate-the-master-table-data-as-medprofiles-objects" title="Permalink to this heading"></a></h2>
-<p>Run the main function in the <em>src/back/instantiate_data_from_master_table.py</em> file, providing the path to the master table (<em>source_file</em>) and the path for the generated binary file (<em>destination_file</em>).</p>
-<ul>
-<li><p>For the Meningioma dataset:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>The <em>source_file</em> is <em>../../data/meningioma/csv/master_table.csv</em>.</p></li>
-<li><p>The <em>destination_file</em> is <em>../../data/meningioma/MEDprofileData</em>.</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>For the MIMIC-IV dataset:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>The <em>source_file</em> is <em>../../data/mimic/csv/master_table.csv</em>.</p></li>
-<li><p>The <em>destination_file</em> is <em>../../data/mimic/MEDprofileData</em>.</p></li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-</section>
-<section id="once-you-have-completed-these-steps">
-<h2>5. Once you have completed these steps<a class="headerlink" href="#once-you-have-completed-these-steps" title="Permalink to this heading"></a></h2>
-<p>You can visualize your datasets as MEDprofiles by following the notebooks tutorials.</p>
+<section id="display-manipulate-and-generate-static-csv-files-from-a-medcohort-figure">
+<h2>4. Display, manipulate and generate static CSV files from a MEDcohort figure<a class="headerlink" href="#display-manipulate-and-generate-static-csv-files-from-a-medcohort-figure" title="Permalink to this heading"></a></h2>
+<p>Follow the <em>notebooks/display_MEDcohort_figure_and_generate_static_csv.ipynb</em> file instructions. At the end of the execution you must have generated static csv files under the <em>output/</em> folder.</p>
 </section>
 </section>
 
@@ -153,7 +118,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="mimic_dataset.html" class="btn btn-neutral float-left" title="MIMIC-IV dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install_repo.html" class="btn btn-neutral float-left" title="Use the MEDprofiles package inside this repository" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="notebooks.html" class="btn btn-neutral float-right" title="Notebooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

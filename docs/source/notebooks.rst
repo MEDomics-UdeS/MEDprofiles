@@ -3,18 +3,18 @@ Notebooks
 #########
 
 
-MEDprofiles visualisation
+Initialize MEDprofiles from MIMIC data
+======================================
+
+.. toctree:: initialize_MEDprofiles_from_mimic_data
+
+
+Display MEDprofile figure
 =========================
 
-.. toctree:: MEDprofiles_visualisation
+.. toctree:: display_MEDprofile_figure
 
+Display MEDcohort figure
+========================
 
-MEDprofiles semi-front
-======================
-
-.. toctree:: MEDprofiles_semi_front
-
-MEDcohort semi-front
-====================
-
-.. toctree:: MEDcohort_semi_front
+.. toctree:: display_MEDcohort_figure_and_generate_static_csv

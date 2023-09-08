@@ -6,26 +6,26 @@ MEDclasses
 MEDbaseObject
 =============
 
-.. autoclass:: MEDclasses.MEDbaseObject
+.. autoclass:: MEDprofiles.MEDclasses.MEDbaseObject
     :members:
 
 
 MEDtab
 ======
 
-.. autoclass:: MEDclasses.MEDtab
+.. autoclass:: MEDprofiles.MEDclasses.MEDtab
     :members:
 
 
 MEDprofile
 ==========
 
-.. autoclass:: MEDclasses.MEDprofile
+.. autoclass:: MEDprofiles.MEDclasses.MEDprofile
     :members:
 
 
 MEDcohort
 =========
 
-.. autoclass:: MEDclasses.MEDcohort
+.. autoclass:: MEDprofiles.MEDclasses.MEDcohort
     :members:

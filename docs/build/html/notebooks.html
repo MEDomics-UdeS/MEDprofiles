@@ -20,7 +20,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="MEDProfiles visualisation" href="MEDprofiles_visualisation.html" />
+    <link rel="next" title="Initialize MEDprofiles from MIMIC data" href="initialize_MEDprofiles_from_mimic_data.html" />
     <link rel="prev" title="Instructions" href="instructions.html" /> 
 </head>
 
@@ -46,24 +46,23 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="meningioma_dataset.html">Meningioma dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mimic_dataset.html">MIMIC-IV dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_package.html">Use the MEDprofiles package in another project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_repo.html">Use the MEDprofiles package inside this repository</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="instructions.html">Instructions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Notebooks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#medprofiles-visualisation">MEDprofiles visualisation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_visualisation.html">MEDProfiles visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initialize-medprofiles-from-mimic-data">Initialize MEDprofiles from MIMIC data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="initialize_MEDprofiles_from_mimic_data.html">Initialize MEDprofiles from MIMIC data</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#medprofiles-semi-front">MEDprofiles semi-front</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_semi_front.html">MEDProfiles Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#display-medprofile-figure">Display MEDprofile figure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="display_MEDprofile_figure.html">Display a MEDprofile figure</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#medcohort-semi-front">MEDcohort semi-front</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="MEDcohort_semi_front.html">MEDCohort Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#display-medcohort-figure">Display MEDcohort figure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="display_MEDcohort_figure_and_generate_static_csv.html">Display a MEDcohort figure and generate static CSV files</a></li>
 </ul>
 </li>
 </ul>
@@ -74,7 +73,8 @@
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MEDclasses.html">MEDclasses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
-<li class="toctree-l1"><a class="reference internal" href="semi_front.html">Semi-front</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_classes.html">Semi-front - Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_utils.html">Semi-front - Utils Functions</a></li>
 </ul>
 
         </div>
@@ -103,61 +103,39 @@
              
   <section id="notebooks">
 <h1>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this heading"></a></h1>
-<section id="medprofiles-visualisation">
-<h2>MEDprofiles visualisation<a class="headerlink" href="#medprofiles-visualisation" title="Permalink to this heading"></a></h2>
+<section id="initialize-medprofiles-from-mimic-data">
+<h2>Initialize MEDprofiles from MIMIC data<a class="headerlink" href="#initialize-medprofiles-from-mimic-data" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="MEDprofiles_visualisation.html">MEDProfiles visualisation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="MEDprofiles_visualisation.html#Summarize-data">Summarize data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MEDprofiles_visualisation.html#Display-all-data-for-a-profile-list">Display all data for a profile list</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MEDprofiles_visualisation.html#Display-data-with-specified-attributes">Display data with specified attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MEDprofiles_visualisation.html#Display-filtered-data-(one-filter)">Display filtered data (one filter)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_visualisation.html#The-whole-profiles-concerned">The whole profiles concerned</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_visualisation.html#Only-the-tabs-concerned">Only the tabs concerned</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="MEDprofiles_visualisation.html#Display-filtered-data-(more-than-one-filter,-only-one-filter-by-attribute)">Display filtered data (more than one filter, only one filter by attribute)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_visualisation.html#The-tabs-matching-at-least-one-filter-from-the-dict">The tabs matching at least one filter from the dict</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_visualisation.html#Only-the-tabs-matching-all-filters-from-the-dict">Only the tabs matching all filters from the dict</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="MEDprofiles_visualisation.html#Display-filtered-data-(more-than-one-filter,-one-or-more-filter-by-attribute)">Display filtered data (more than one filter, one or more filter by attribute)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_visualisation.html#The-tabs-where-at-least-one-filter-by-attribute-is-true">The tabs where at least one filter by attribute is true</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_visualisation.html#The-tabs-where-all-filters-from-all-attributes-are-true">The tabs where all filters from all attributes are true</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="MEDprofiles_visualisation.html#Display-filtered-data-where-all-tabs-from-profile-match-filters">Display filtered data where all tabs from profile match filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="initialize_MEDprofiles_from_mimic_data.html">Initialize MEDprofiles from MIMIC data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="initialize_MEDprofiles_from_mimic_data.html#1.-Import-the-necessary-functions-from-the-MEDprofile's-package">1. Import the necessary functions from the MEDprofile’s package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initialize_MEDprofiles_from_mimic_data.html#2.-Create-the-MEDclasses-from-the-MIMIC-master-table">2. Create the MEDclasses from the MIMIC master table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initialize_MEDprofiles_from_mimic_data.html#3.-Instantiate-the-master-table-data-as-MEDprofiles">3. Instantiate the master table data as MEDprofiles</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
-<section id="medprofiles-semi-front">
-<h2>MEDprofiles semi-front<a class="headerlink" href="#medprofiles-semi-front" title="Permalink to this heading"></a></h2>
+<section id="display-medprofile-figure">
+<h2>Display MEDprofile figure<a class="headerlink" href="#display-medprofile-figure" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="MEDprofiles_semi_front.html">MEDProfiles Visualization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="MEDprofiles_semi_front.html#Here-is-a-list-of-what-you-can-do-with-the-interactive-figure:">Here is a list of what you can do with the interactive figure:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MEDprofiles_semi_front.html#Matplotlib">Matplotlib</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_semi_front.html#Define-plot-functions">Define plot functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="MEDprofiles_semi_front.html#Customized-version">Customized version</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="display_MEDprofile_figure.html">Display a MEDprofile figure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="display_MEDprofile_figure.html#Get-a-MEDprofile">Get a MEDprofile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="display_MEDprofile_figure.html#Set-the-figure">Set the figure</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
-<section id="medcohort-semi-front">
-<h2>MEDcohort semi-front<a class="headerlink" href="#medcohort-semi-front" title="Permalink to this heading"></a></h2>
+<section id="display-medcohort-figure">
+<h2>Display MEDcohort figure<a class="headerlink" href="#display-medcohort-figure" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="MEDcohort_semi_front.html">MEDCohort Visualization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="MEDcohort_semi_front.html#Here-is-a-list-of-what-you-can-do-with-the-interactive-figure:">Here is a list of what you can do with the interactive figure:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MEDcohort_semi_front.html#Import-modules-and-patient-data">Import modules and patient data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MEDcohort_semi_front.html#Define-plot-functions">Define plot functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MEDcohort_semi_front.html#Display-Cohort">Display Cohort</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MEDcohort_semi_front.html#Generate-output-csv-from-time-points">Generate output csv from time points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="display_MEDcohort_figure_and_generate_static_csv.html">Display a MEDcohort figure and generate static CSV files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="display_MEDcohort_figure_and_generate_static_csv.html#Get-the-cohort">Get the cohort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="display_MEDcohort_figure_and_generate_static_csv.html#Set-the-figure">Set the figure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="display_MEDcohort_figure_and_generate_static_csv.html#Save-static-csv-files-in-an-output-folder">Save static csv files in an output folder</a></li>
 </ul>
 </li>
 </ul>
@@ -170,7 +148,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="instructions.html" class="btn btn-neutral float-left" title="Instructions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="MEDprofiles_visualisation.html" class="btn btn-neutral float-right" title="MEDProfiles visualisation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="initialize_MEDprofiles_from_mimic_data.html" class="btn btn-neutral float-right" title="Initialize MEDprofiles from MIMIC data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -37,7 +37,7 @@ LABEVENTS = ['Glucose', 'Potassium', 'Sodium', 'Chloride', 'Creatinine',
              'Urea Nitrogen', 'Bicarbonate', 'Anion Gap', 'Hemoglobin', 'Hematocrit',
              'Magnesium', 'Platelet Count', 'Phosphate', 'White Blood Cells',
              'Calcium, Total', 'MCH', 'Red Blood Cells', 'MCHC', 'MCV', 'RDW',
-             'Platelet Count', 'Neutrophils', 'Vancomycin']
+             'Neutrophils', 'Vancomycin']
 PROCEDUREEVENTS = ['Foley Catheter', 'PICC Line', 'Intubation', 'Peritoneal Dialysis',
                    'Bronchoscopy', 'EEG', 'Dialysis - CRRT', 'Dialysis Catheter',
                    'Chest Tube Removed', 'Hemodialysis']

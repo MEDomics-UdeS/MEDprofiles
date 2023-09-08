@@ -46,9 +46,8 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="meningioma_dataset.html">Meningioma dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mimic_dataset.html">MIMIC-IV dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_package.html">Use the MEDprofiles package in another project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_repo.html">Use the MEDprofiles package inside this repository</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
@@ -60,30 +59,30 @@
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">MEDclasses</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#medbaseobject">MEDbaseObject</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#MEDclasses.MEDbaseObject"><code class="docutils literal notranslate"><span class="pre">MEDbaseObject</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#MEDclasses.MEDbaseObject.are_attributes_in_filter"><code class="docutils literal notranslate"><span class="pre">MEDbaseObject.are_attributes_in_filter()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#MEDclasses.MEDbaseObject.is_attribute_in_filter"><code class="docutils literal notranslate"><span class="pre">MEDbaseObject.is_attribute_in_filter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDbaseObject"><code class="docutils literal notranslate"><span class="pre">MEDbaseObject</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDbaseObject.are_attributes_in_filter"><code class="docutils literal notranslate"><span class="pre">MEDbaseObject.are_attributes_in_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDbaseObject.is_attribute_in_filter"><code class="docutils literal notranslate"><span class="pre">MEDbaseObject.is_attribute_in_filter()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#medtab">MEDtab</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#MEDclasses.MEDtab"><code class="docutils literal notranslate"><span class="pre">MEDtab</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDtab"><code class="docutils literal notranslate"><span class="pre">MEDtab</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#medprofile">MEDprofile</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#MEDclasses.MEDprofile"><code class="docutils literal notranslate"><span class="pre">MEDprofile</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#MEDclasses.MEDprofile.are_med_tab_in_filter"><code class="docutils literal notranslate"><span class="pre">MEDprofile.are_med_tab_in_filter()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#MEDclasses.MEDprofile.filter_med_tab_from_profile"><code class="docutils literal notranslate"><span class="pre">MEDprofile.filter_med_tab_from_profile()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDprofile"><code class="docutils literal notranslate"><span class="pre">MEDprofile</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDprofile.are_med_tab_in_filter"><code class="docutils literal notranslate"><span class="pre">MEDprofile.are_med_tab_in_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDprofile.filter_med_tab_from_profile"><code class="docutils literal notranslate"><span class="pre">MEDprofile.filter_med_tab_from_profile()</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#medcohort">MEDcohort</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#MEDclasses.MEDcohort"><code class="docutils literal notranslate"><span class="pre">MEDcohort</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#MEDclasses.MEDcohort.filter_med_profile_from_cohort"><code class="docutils literal notranslate"><span class="pre">MEDcohort.filter_med_profile_from_cohort()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#MEDclasses.MEDcohort.profile_list_to_df"><code class="docutils literal notranslate"><span class="pre">MEDcohort.profile_list_to_df()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#MEDclasses.MEDcohort.summarize_data"><code class="docutils literal notranslate"><span class="pre">MEDcohort.summarize_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDcohort"><code class="docutils literal notranslate"><span class="pre">MEDcohort</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDcohort.filter_med_profile_from_cohort"><code class="docutils literal notranslate"><span class="pre">MEDcohort.filter_med_profile_from_cohort()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDcohort.profile_list_to_df"><code class="docutils literal notranslate"><span class="pre">MEDcohort.profile_list_to_df()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDcohort.summarize_data"><code class="docutils literal notranslate"><span class="pre">MEDcohort.summarize_data()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -91,7 +90,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="backend.html">Backend</a></li>
-<li class="toctree-l1"><a class="reference internal" href="semi_front.html">Semi-front</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_classes.html">Semi-front - Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semi_front_utils.html">Semi-front - Utils Functions</a></li>
 </ul>
 
         </div>
@@ -123,12 +123,12 @@
 <section id="medbaseobject">
 <h2>MEDbaseObject<a class="headerlink" href="#medbaseobject" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="MEDclasses.MEDbaseObject">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MEDclasses.</span></span><span class="sig-name descname"><span class="pre">MEDbaseObject</span></span><a class="headerlink" href="#MEDclasses.MEDbaseObject" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDbaseObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MEDprofiles.MEDclasses.</span></span><span class="sig-name descname"><span class="pre">MEDbaseObject</span></span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDbaseObject" title="Permalink to this definition"></a></dt>
 <dd><p>MEDbaseObject is the base of other classes, containing filter functions.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="MEDclasses.MEDbaseObject.are_attributes_in_filter">
-<span class="sig-name descname"><span class="pre">are_attributes_in_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_filter_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary_in_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDbaseObject.are_attributes_in_filter" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDbaseObject.are_attributes_in_filter">
+<span class="sig-name descname"><span class="pre">are_attributes_in_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_filter_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary_in_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDbaseObject.are_attributes_in_filter" title="Permalink to this definition"></a></dt>
 <dd><p>Function that take a dict as entry, associating object attributes and expected values. If all_necessary is True
 the function return True if all the attribute dict elements match their filters, False in the other case. If
 all_necessary is set to False, the function return True if at least one attribute match the filter. The same
@@ -148,8 +148,8 @@ principle is applicated to class objects with the parameter all_necessary_in_att
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="MEDclasses.MEDbaseObject.is_attribute_in_filter">
-<span class="sig-name descname"><span class="pre">is_attribute_in_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDbaseObject.is_attribute_in_filter" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDbaseObject.is_attribute_in_filter">
+<span class="sig-name descname"><span class="pre">is_attribute_in_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDbaseObject.is_attribute_in_filter" title="Permalink to this definition"></a></dt>
 <dd><p>Function that return True if the object’s attribute match the filter and False if not. Filter may be a tuple (in
 this case consider an interval), a list (return True if the object attribute is contained in the list) or a
 simple value.</p>
@@ -172,16 +172,16 @@ simple value.</p>
 <section id="medtab">
 <h2>MEDtab<a class="headerlink" href="#medtab" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="MEDclasses.MEDtab">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MEDclasses.</span></span><span class="sig-name descname"><span class="pre">MEDtab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Time_point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demographic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">demographic</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chartevent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">chartevent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labevent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">labevent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vd</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vp</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vmd</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">vmp</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">necg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">necg</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nech</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">nech</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">nrad</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">procedureevent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">procedureevent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDtab" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDtab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MEDprofiles.MEDclasses.</span></span><span class="sig-name descname"><span class="pre">MEDtab</span></span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDtab" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
 <section id="medprofile">
 <h2>MEDprofile<a class="headerlink" href="#medprofile" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="MEDclasses.MEDprofile">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MEDclasses.</span></span><span class="sig-name descname"><span class="pre">MEDprofile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PatientID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_MEDtab</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#MEDclasses.MEDtab" title="MEDclasses.MEDtab.MEDtab"><span class="pre">MEDtab</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDprofile" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDprofile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MEDprofiles.MEDclasses.</span></span><span class="sig-name descname"><span class="pre">MEDprofile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PatientID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_MEDtab</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDtab" title="MEDprofiles.MEDclasses.MEDtab.MEDtab"><span class="pre">MEDtab</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDprofile" title="Permalink to this definition"></a></dt>
 <dd><p>MEDprofile represent a patient in the master table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -192,8 +192,8 @@ simple value.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="MEDclasses.MEDprofile.are_med_tab_in_filter">
-<span class="sig-name descname"><span class="pre">are_med_tab_in_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_filter_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary_in_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_med_tab_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDprofile.are_med_tab_in_filter" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDprofile.are_med_tab_in_filter">
+<span class="sig-name descname"><span class="pre">are_med_tab_in_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_filter_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary_in_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_med_tab_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDprofile.are_med_tab_in_filter" title="Permalink to this definition"></a></dt>
 <dd><p>Return True if elements from list_MEDTab match the attribute_filter_dict. If all_med_tab_necessary is True, all
 the MEDTab must match the filters, if all_med_tab_necessary is False the function returns True if at least one
 MEDTab match the filters.</p>
@@ -213,8 +213,8 @@ MEDTab match the filters.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="MEDclasses.MEDprofile.filter_med_tab_from_profile">
-<span class="sig-name descname"><span class="pre">filter_med_tab_from_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_filter_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary_in_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDprofile.filter_med_tab_from_profile" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDprofile.filter_med_tab_from_profile">
+<span class="sig-name descname"><span class="pre">filter_med_tab_from_profile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_filter_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary_in_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDprofile.filter_med_tab_from_profile" title="Permalink to this definition"></a></dt>
 <dd><p>Return a profile where elements from list_MEDTab match attribute_filter_dict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -236,8 +236,8 @@ MEDTab match the filters.</p>
 <section id="medcohort">
 <h2>MEDcohort<a class="headerlink" href="#medcohort" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="MEDclasses.MEDcohort">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MEDclasses.</span></span><span class="sig-name descname"><span class="pre">MEDcohort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_MEDprofile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#MEDclasses.MEDprofile" title="MEDclasses.MEDprofile.MEDprofile"><span class="pre">MEDprofile</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDcohort" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDcohort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MEDprofiles.MEDclasses.</span></span><span class="sig-name descname"><span class="pre">MEDcohort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_MEDprofile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#MEDprofiles.MEDclasses.MEDprofile" title="MEDprofiles.MEDclasses.MEDprofile.MEDprofile"><span class="pre">MEDprofile</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDcohort" title="Permalink to this definition"></a></dt>
 <dd><p>MEDcohort represent a set of patients profiles.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -245,8 +245,8 @@ MEDTab match the filters.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="MEDclasses.MEDcohort.filter_med_profile_from_cohort">
-<span class="sig-name descname"><span class="pre">filter_med_profile_from_cohort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_filter_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary_in_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_med_tab_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_med_tab</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDcohort.filter_med_profile_from_cohort" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDcohort.filter_med_profile_from_cohort">
+<span class="sig-name descname"><span class="pre">filter_med_profile_from_cohort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_filter_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary_in_attribute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_med_tab_necessary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_med_tab</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDcohort.filter_med_profile_from_cohort" title="Permalink to this definition"></a></dt>
 <dd><p>Filter list_MEDProfile according to attribute_filter_dict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -265,8 +265,8 @@ MEDTab match the filters.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="MEDclasses.MEDcohort.profile_list_to_df">
-<span class="sig-name descname"><span class="pre">profile_list_to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_sub_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDcohort.profile_list_to_df" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDcohort.profile_list_to_df">
+<span class="sig-name descname"><span class="pre">profile_list_to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by_sub_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDcohort.profile_list_to_df" title="Permalink to this definition"></a></dt>
 <dd><p>Return list_MEDProfile values as a dataframe where columns are defined by attribute list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -282,8 +282,8 @@ MEDTab match the filters.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="MEDclasses.MEDcohort.summarize_data">
-<span class="sig-name descname"><span class="pre">summarize_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#MEDclasses.MEDcohort.summarize_data" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="MEDprofiles.MEDclasses.MEDcohort.summarize_data">
+<span class="sig-name descname"><span class="pre">summarize_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#MEDprofiles.MEDclasses.MEDcohort.summarize_data" title="Permalink to this definition"></a></dt>
 <dd><p>Display information about cohort, Tab attributes, number of columns/rows, Nan percentage, means and modes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>

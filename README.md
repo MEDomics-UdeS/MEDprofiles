@@ -2,24 +2,23 @@
 
 * [Introduction](#1-introduction)
 * [Installation](#2-installation)
-* [How to use the package](#3-how-to-use-the-package)
+* [How to use the repository](#3-how-to-use-the-repository)
 * [Documentation](#4-documentation)
-* [Tutorials](#5-tutorials)
-* [Datasource's](#6-datasources)
+* [Datasource's](#5-datasources)
 * [Project Tree](#project-tree)
 
 
 ## 1. Introduction
 
-This is a Python module for treatment and visualization of patient data. It is a component of
-the [MEDomicsLab](https://github.com/MEDomics-UdeS/MEDomicsLab) project. The module is specifically tailored to work
-with two datasets: Meningioma and MIMIC-IV.
+This repository contains a Python package for treatment and visualization of patient data. It is a component of
+the [MEDomicsLab](https://github.com/MEDomics-UdeS/MEDomicsLab) project. The package is specifically tailored to work
+with two datasets: Meningioma and MIMIC-IV. The repository also contains code to demonstrate the use of the MEDprofiles
+package.
 
-The MEDprofiles module offers several functionalities, including:
+The MEDprofiles package offers several functionalities, including:
 
-- Generating a temporal master table based on a predefined template.
-- Dynamically creating classes from the master table, allowing for convenient manipulation of data as MEDprofiles
-  objects.
+- Dynamically creating classes from a master table, following a certain configuration, allowing for convenient 
+  manipulation of data as MEDprofiles objects.
 - Instantiating data as MEDprofiles objects based on the previously generated classes.
 - Displaying and manipulating MEDprofiles objects, either one at a time or by cohort.
 
@@ -28,7 +27,18 @@ These features enable efficient handling and analysis of patient data extracted 
 
 ## 2. Installation
 
-The MEDprofile module requires *python 3.8* or higher to run.
+### MEDprofiles package
+
+If you want to import the MEDprofiles package in another project, you may install it using the following command at the 
+root of your project :
+
+```
+pip install git+https://github.com/MEDomics-UdeS/MEDprofiles.git
+```
+
+### MEDprofiles repository
+
+The MEDprofiles repository requires *python 3.8* or higher to run.
 
 Install the requirements as following :
 
@@ -39,7 +49,7 @@ pip install -r requirements.txt
 Additionally, you need to add the data locally. Depending on whether you are working with the Meningioma or MIMIC-IV 
 dataset, refer to the respective instructions below.
 
-### Meningioma dataset
+#### Meningioma dataset
 
 Copy the following files into *data/meningioma/csv* :
 
@@ -52,7 +62,7 @@ Copy the following files into *data/meningioma/csv* :
 Next, run *data/meningioma/create_master_table.ipynb*. This will generate the master table used throughout the 
 repository, saved as *data/meningioma/csv/master_table.csv*.
 
-### MIMIC-IV dataset
+#### MIMIC-IV dataset
 
 Copy the following files into *data/mimic/csv* :
 
@@ -84,41 +94,24 @@ patient_list = random.sample(set(df_embeddings['haim_id']), 100)
 ```
 
 
-## 3. How to use the package
+## 3. How to use the repository
 
-To use the package, follow these steps:
+To use the repository, follow these steps:
 
 1. **Create the master table**: Start by running the *create_master_table.ipynb* file located in the folder 
    corresponding to the dataset you wish to use.
 
-2. **Specify the constants**: Open the *src/back/constant.py* file and comment/uncomment the lines that correspond to 
-   your dataset. This step helps in setting the appropriate constants.
+2. **Instantiate the master table data as MEDprofiles**: Follow the *notebooks/initialize_MEDprofiles_from_mimic_data.ipynb*
+   file instructions. This notebook illustrate the process with the mimic data. You may need to make some adjustments if 
+   you work with the meningioma dataset. At the end of the execution you must have a MEDclasses folder created at the 
+   root of your project and a binary file containing MEDprofiles data located at *data/mimic/MEDprofiles_bin*.
 
-3. **Create the classes matching your master table**: Run the main function in the 
-   *src/back/create_classes_from_master_table.py* file, providing the path to the master table file as a parameter.
-   - For the Meningioma dataset, the file location is *../../data/meningioma/csv/master_table.csv*.
-   - For the MIMIC-IV dataset, the file location is *../../data/mimic/csv/master_table.csv*.
-   The classes will be created under the MEDclasses folder. Initially, the folder contains definitions for four classes:
-   - MEDbaseObject
-   - MEDcohort
-   - MEDprofile
-   - MEDtab
+3. **Display and manipulate a MEDprofile figure**: Follow the *notebooks/display_MEDprofile_figure.ipynb* file
+   instructions.
 
-   Ensure that the MEDtab definition is empty (i.e., contains only "pass") because the creation of classes will modify 
-   and complete the MEDtab attributes.
-
-4. **Instantiate the master table data as MEDprofile objects**: Run the main function in the 
-   *src/back/instantiate_data_from_master_table.py* file, providing the path to the master table (*source_file*) and the
-   path for the generated binary file (*destination_file*).
-   - For the Meningioma dataset:
-     - The *source_file* is *../../data/meningioma/csv/master_table.csv*.
-     - The *destination_file* is *../../data/meningioma/MEDprofileData*.
-   - For the MIMIC-IV dataset:
-     - The *source_file* is *../../data/mimic/csv/master_table.csv*.
-     - The *destination_file* is *../../data/mimic/MEDprofileData*.
-
-5. Once you have completed these steps, you can visualize your datasets as MEDprofiles by following the notebook 
-   tutorials. For more information, refer to the [Tutorials](#5-tutorials) section.
+4. **Display, manipulate and generate static CSV files from a MEDcohort figure**: Follow the 
+   *notebooks/display_MEDcohort_figure_and_generate_static_csv.ipynb* file instructions. At the end of the execution
+   you must have generated static csv files under the *output/* folder.
 
 
 ## 4. Documentation
@@ -127,24 +120,7 @@ The documentation has been generated using Sphinx. To view it, open the *index.h
 *docs/build/html/index.html*.
 
 
-## 5. Tutorials
-
-All the tutorials are illustrated with MIMIC-IV data but can easily be adapted for Meningioma data. To adapt the 
-tutorials for Meningioma data, modify the path to the binary file used for MEDprofiles instantiation and adjust the 
-display according to the classes you want to visualize in your MEDprofiles.
-
-The tutorials are available in the following Jupyter Notebooks located in the *notebook* folder:
-
-- *MEDprofiles_visualisation.ipynb*: This tutorial demonstrates how to filter data using the MEDbaseObject, MEDprofile, 
-  and MEDcohort functions.
-- *MEDprofiles_semi_front.ipynb*: This tutorial shows how to visualize and manipulate a MEDprofile in a matplotlib 
-  figure.
-- *MEDcohort_semi_front.ipynb*: This tutorial demonstrates how to visualize and manipulate a MEDcohort (a set of 
-  MEDprofiles) in a matplotlib figure. Additionally, you will be able to save the cohort data split by time point under 
-  the *output/* folder by executing the last cell of the notebook.
-
-
-## 6. Datasource's
+## 5. Datasource's
 
 The two datasets used with this repository are confidential data. The Meningioma dataset is available in the MEDomicsLab 
 drive folder. The MIMIC-IV dataset is available on [physionet](https://physionet.org/content/mimiciv/2.2/).
@@ -160,18 +136,24 @@ drive folder. The MIMIC-IV dataset is available on [physionet](https://physionet
 |--- docs                         <- Documentation files autogenerated by Sphinx
 |    |--- build/html/index.html   <- Access to the index page of the MEDprofiles package documentation
 |
-|--- MEDclasses                   <- Contains classes related to the package and the dataset
-|    |--- MEDbaseObject.py        <- Definition of a MEDbaseObject with utility functions (other classes inherit from this class)
-|    |--- MEDcohort.py            <- Definition of a MEDcohort object composed of a list of MEDprofiles
-|    |--- MEDprofile.py           <- Definition of a MEDprofile object composed of a list of MEDtabs
-|    |--- MEDtab.py               <- Definition of a MEDtab object composed of a date and an instance of each class generated by the code depending on the dataset
+|--- MEDprofiles                        <- The MEDprofiles package
+|       |--- MEDclasses                 <- Contains classes related to the package and the dataset
+|       |       |--- MEDbaseObject.py   <- Definition of a MEDbaseObject with utility functions (other classes inherit from this class)
+|       |       |--- MEDcohort.py       <- Definition of a MEDcohort object composed of a list of MEDprofiles
+|       |       |--- MEDprofile.py      <- Definition of a MEDprofile object composed of a list of MEDtabs
+|       |       |--- MEDtab.py          <- Definition of a MEDtab object composed of a date and an instance of each class generated by the code depending on the dataset
+|       |--- src
+|               |--- back
+|               |       |--- constant.py                            <- Definition of constants
+|               |       |--- create_classes_from_master_table.py    <- Script for MEDclasses generation
+|               |       |--- instantiate_data_from_master_table.py  <- Script for the master table data instantiation as MEDprofiles objects
+|               |--- semi_front
+|                       |--- utils                  <- Folder containing utils functions for interactive figure creation and manipulation
+|                       |--- BinFigure.py           <- Class representing a bin figure
+|                       |--- MEDcohortFigure.py     <- Class representing a MEDcohort figure
+|                       |--- MEDprofileFigure.py    <- Class representing a MEDprofile figure
 |
-|--- notebooks                    <- Tutorials applied to the MIMIC-IV dataset
+|--- notebooks      <- Tutorials showing how to use the MEDprofiles package
 |
-|--- output                       <- Folder where the CSV files from the final cohort will be generated
-|
-|--- src                          <- Source code for the package
-|    |--- back                    <- Constants definition, files for class creation, and data instantiation
-|    |--- semi_front              <- Definition of utility functions for profile and cohort display
-
+|--- output         <- Folder where the CSV files from the final cohort will be generated
 ```

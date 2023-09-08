@@ -1,0 +1,149 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "pycharm": {
+     "name": "#%% md\n"
+    }
+   },
+   "source": [
+    "# Display a MEDprofile figure\n",
+    "\n",
+    "**Here is a list of what you can do with the interactive figure:**\n",
+    "\n",
+    " - Display/Hide point values by clicking near the corresponding point.\n",
+    " - Set the time relative to a specific class by pressing \"r\" on your keyboard while hovering over the desired class. The same action can be used to retrieve the absolute time.\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "import os\n",
+    "import pickle\n",
+    "import random\n",
+    "\n",
+    "os.chdir('..')\n",
+    "\n",
+    "from MEDclasses import *\n",
+    "from MEDprofiles.src.semi_front.MEDprofileFigure import MEDprofileFigure\n",
+    "\n",
+    "# Set the figure interactive\n",
+    "%matplotlib qt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "pycharm": {
+     "name": "#%% md\n"
+    }
+   },
+   "source": [
+    "## Get a MEDprofile"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Load the pickle file\n",
+    "data_file = open('data/mimic/MEDprofiles_bin', 'rb')\n",
+    "MEDprofile_list = pickle.load(data_file)\n",
+    "data_file.close()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "pycharm": {
+     "is_executing": true,
+     "name": "#%%\n"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Select randomly a MEDprofile\n",
+    "cohort = MEDcohort(list_MEDprofile=MEDprofile_list)\n",
+    "df = cohort.profile_list_to_df()\n",
+    "patient_id = random.choice(df.index)\n",
+    "df_profile = df.loc[[patient_id]]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "pycharm": {
+     "name": "#%% md\n"
+    }
+   },
+   "source": [
+    "## Set the figure"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "pycharm": {
+     "is_executing": true,
+     "name": "#%%\n"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Define the classes attributes dict\n",
+    "classes_attributes_dict = {'demographic': ([], 'compact'), 'labevent': (['sodium_max', 'sodium_min', 'sodium_trend'], 'complete'), 'nrad': (['attr_0', 'attr_1', 'attr_2'], 'compact'), 'vp': ([], 'compact')}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "pycharm": {
+     "name": "#%%\n"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "# Create the figure through the MEDprofileFigure class\n",
+    "figure = MEDprofileFigure(classes_attributes_dict, patient_id, df_profile)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}

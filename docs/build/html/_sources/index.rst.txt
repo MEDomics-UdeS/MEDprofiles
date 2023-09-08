@@ -6,15 +6,15 @@
 Welcome to MEDprofiles's documentation!
 =======================================
 
-This is a Python module for treatment and visualization of patient data. It is a component of
-the `MEDomicsLab <https://github.com/MEDomics-UdeS/MEDomicsLab>`_ project. The module is specifically tailored to work
-with two datasets: Meningioma and MIMIC-IV.
+This repository contains a Python package for treatment and visualization of patient data. It is a component of
+the `MEDomicsLab <https://github.com/MEDomics-UdeS/MEDomicsLab>`_ project. The package is specifically tailored to work
+with two datasets: Meningioma and MIMIC-IV. The repository also contains code to demonstrate the use of the MEDprofiles
+package.
 
-The MEDprofiles module offers several functionalities, including:
+The MEDprofiles package offers several functionalities, including:
 
-- Generating a temporal master table based on a predefined template.
-- Dynamically creating classes from the master table, allowing for convenient manipulation of data as MEDprofiles
-  objects.
+- Dynamically creating classes from a master table, following a certain configuration, allowing for convenient
+  manipulation of data as MEDprofiles objects.
 - Instantiating data as MEDprofiles objects based on the previously generated classes.
 - Displaying and manipulating MEDprofiles objects, either one at a time or by cohort.
 
@@ -25,9 +25,8 @@ These features enable efficient handling and analysis of patient data extracted 
    :maxdepth: 1
    :caption: Getting started:
 
-   installation
-   meningioma_dataset
-   mimic_dataset
+   install_package
+   install_repo
 
 
 .. toctree::
@@ -45,7 +44,8 @@ These features enable efficient handling and analysis of patient data extracted 
    data
    MEDclasses
    backend
-   semi_front
+   semi_front_classes
+   semi_front_utils
 
 
 
