@@ -1,6 +1,6 @@
 PyQt5~=5.15.9
 docutils
-dask~=2023.5.0
+dask
 jupyter~=1.0.0
 matplotlib~=3.7.1
 matplotlib-inline~=0.1.6
