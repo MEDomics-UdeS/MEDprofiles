@@ -88,12 +88,12 @@ def add_attributes_to_class(path, class_name, attribute_list, types_list, base_c
             new_data.append(line)
         # Check if the attributes are not already in the imports and import them if necessary
         if line == "from ." + base_class + " import " + base_class + "\n" and "from ." + attribute_list[0] + " import "\
-                + attribute_list[0] + "\n" not in data and import_attributes:
+                + types_list[0] + "\n" not in data and import_attributes:
             for i in range(len(attribute_list)):
-                new_data.append("from ." + attribute_list[i] + " import " + attribute_list[i] + "\n")
+                new_data.append("from ." + attribute_list[i] + " import " + types_list[i] + "\n")
         # Check if the attributes are not already in the class definition and add them at the right place
         if line == "class " + class_name + '(' + base_class + '):\n' and tab + attribute_list[0] + ": Optional[" + \
-                attribute_list[0] + "]\n" not in data:
+                types_list[0] + "]\n" not in data:
             for i in range(len(attribute_list)):
                 new_data.append(tab + attribute_list[i] + ": Optional[" + types_list[i] + "]\n")
     with open(class_path, "w") as file:
