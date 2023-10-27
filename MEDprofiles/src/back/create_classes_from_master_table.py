@@ -8,8 +8,7 @@ import shutil
 
 import pandas as pd
 
-import MEDprofiles
-from MEDprofiles.src.back.constant import *
+from .constant import *
 
 
 def get_classes_from_df(df):

@@ -11,7 +11,7 @@ import pandas as pd
 import pickle
 from tqdm import tqdm
 
-from MEDprofiles.src.back.constant import *
+from .constant import *
 
 
 def main(source_file, destination_file):

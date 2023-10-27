@@ -2,7 +2,6 @@ import datetime
 from pydantic import validator
 from .MEDbaseObject import MEDbaseObject
 from typing import Optional
-from MEDprofiles.src.back.constant import DATE_FORMAT
 
 
 class MEDtab(MEDbaseObject):
@@ -13,7 +12,7 @@ class MEDtab(MEDbaseObject):
     def parse_date(cls, value):
         value = str(value)
         if value and value != 'nan':
-            return datetime.datetime.strptime(value, DATE_FORMAT).date()
+            return datetime.datetime.strptime(value, __import__('MEDprofiles').src.back.constant.DATE_FORMAT).date()
 
 
 

@@ -3,12 +3,12 @@ import os.path
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
-from MEDprofiles.src.back.constant import FIXED_COLUMNS
-from MEDprofiles.src.semi_front.BinFigure import BinFigure
-from MEDprofiles.src.semi_front.MEDprofileFigure import MEDprofileFigure
-from MEDprofiles.src.semi_front.utils.MEDcohort_utils import delete_pressed, display_attributes_values, display_cohort, \
+from ..back.constant import FIXED_COLUMNS
+from .BinFigure import BinFigure
+from .MEDprofileFigure import MEDprofileFigure
+from .utils.MEDcohort_utils import delete_pressed, display_attributes_values, display_cohort, \
     display_patient_id_and_data, r_pressed, t_pressed
-from MEDprofiles.src.semi_front.utils.MEDprofiles_utils import set_plot
+from .utils.MEDprofiles_utils import set_plot
 
 
 class MEDcohortFigure:

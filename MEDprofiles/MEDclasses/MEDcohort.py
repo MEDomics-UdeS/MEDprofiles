@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 from .MEDprofile import *
-from MEDprofiles.src.back.constant import *
 import pandas as pd
 
 
@@ -51,7 +50,7 @@ class MEDcohort(BaseModel):
         # If attribute list isn't set, we consider all the attributes
         if not attribute_list:
             attribute_list = list(MEDtab.__fields__.keys())
-            for element in FIXED_COLUMNS[1:]:
+            for element in __import__('MEDprofiles').src.back.constant.FIXED_COLUMNS[1:]:
                 attribute_list.remove(element)
 
         # If by_sub_attributes is True, all sub-attributes are considered as columns
@@ -67,7 +66,7 @@ class MEDcohort(BaseModel):
         for profile in self.list_MEDprofile:
             for tab in profile.list_MEDtab:
                 row = [profile.PatientID]
-                for element in FIXED_COLUMNS[1:]:
+                for element in __import__('MEDprofiles').src.back.constant.FIXED_COLUMNS[1:]:
                     row.append(tab.__dict__[element])
                 for attribute in attribute_list:
                     if by_sub_attributes:
@@ -78,7 +77,7 @@ class MEDcohort(BaseModel):
                 rows.append(row)
 
         # Set fixed columns at the beginning of attribute list
-        attribute_list = FIXED_COLUMNS + attribute_list
+        attribute_list = __import__('MEDprofiles').src.back.constant.FIXED_COLUMNS + attribute_list
 
         # Create the pandas dataframe
         df = pd.DataFrame(rows, columns=attribute_list).set_index(attribute_list[0])
@@ -105,7 +104,7 @@ class MEDcohort(BaseModel):
         # Display information by attribute
         for attribute in MEDtab.__fields__:
             print(attribute, MEDtab.__fields__[attribute].type_)
-            if attribute not in FIXED_COLUMNS:
+            if attribute not in __import__('MEDprofiles').src.back.constant.FIXED_COLUMNS:
                 print('Number of attributes in class : ', len(eval(attribute).__fields__))
                 for sub_attribute in eval(attribute).__fields__:
                     print('\t', sub_attribute, eval(attribute).__fields__[sub_attribute].type_)

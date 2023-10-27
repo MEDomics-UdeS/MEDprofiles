@@ -9,7 +9,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from MEDprofiles.src.back.constant import FIXED_COLUMNS, MARKERS, DATE_FORMAT
+from ...back.constant import FIXED_COLUMNS, MARKERS, DATE_FORMAT
 
 medclasses_module = __import__('MEDclasses')
 
