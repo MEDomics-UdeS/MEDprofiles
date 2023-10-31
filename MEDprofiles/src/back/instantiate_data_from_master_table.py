@@ -11,7 +11,18 @@ import pandas as pd
 import pickle
 from tqdm import tqdm
 
+from flask_server.submodules.MEDprofiles.MEDprofiles import MEDclasses
+
 from .constant import *
+
+progress = 0
+
+def get_progress():
+    """
+    Return the progress of the main function.
+    """
+    global progress
+    return progress
 
 
 def main(source_file, destination_file):
@@ -22,7 +33,10 @@ def main(source_file, destination_file):
     :param destination_file: path to the generated pickle file
 
     """
-    medclasses_module = __import__('MEDclasses')
+
+    import MEDclasses as medclasses_module
+    global progress
+    progress = 0
 
     # Get value from the master table
     df = pd.read_csv(source_file, header=None, low_memory=False)
@@ -38,7 +52,8 @@ def main(source_file, destination_file):
         # To set dynamically the required attributes (without knowing their names), we have to pass through a dictionary
         init = {FIXED_COLUMNS[0]: patientID}
         med_profile = medclasses_module.MEDprofile(**init)
-        profile_data = df.where(df[FIXED_COLUMNS[0]] == patientID).dropna(how='all')
+        #profile_data = df.where(df[FIXED_COLUMNS[0]] == patientID).dropna(how='all')
+        profile_data = df.loc[df[FIXED_COLUMNS[0]] == patientID].dropna(how='all')
         med_tab_list = []
 
         # Create MEDTab object for each row
@@ -75,6 +90,7 @@ def main(source_file, destination_file):
         # MEDProfile is composed by a list of MEDTab
         med_profile.__setattr__('list_MEDtab', med_tab_list)
         med_profile_list.append(med_profile)
+        progress += 1/len(patient_id_list) * 100
 
     # Serialize data
     data_file = open(destination_file, 'ab')

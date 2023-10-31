@@ -5,6 +5,7 @@ Take a master table as entry and create dynamically classes based on the table a
 """
 import os
 import shutil
+import sys
 
 import pandas as pd
 
@@ -101,7 +102,7 @@ def add_attributes_to_class(path, class_name, attribute_list, types_list, base_c
     file.close()
 
 
-def main(path_master_table, path_MEDclasses='../../MEDclasses'):
+def main(path_master_table, path_gen_pkg_MEDclasses='../../MEDclasses'):
     """
     Main function for class creation.
 
@@ -120,10 +121,20 @@ def main(path_master_table, path_MEDclasses='../../MEDclasses'):
 
     # Create directory MEDclasses for classes
     directory_name = 'MEDclasses'
-    if not os.path.exists(path_MEDclasses):
-        path_pkg_MEDclasses = __import__('MEDprofiles').__path__[0]
-        path_pkg_MEDclasses = os.path.join(path_pkg_MEDclasses, directory_name)
-        shutil.copytree(path_pkg_MEDclasses, path_MEDclasses)
+    if os.path.exists(path_gen_pkg_MEDclasses): # Remove the directory if already exists because it may contains truncated content
+        shutil.rmtree(path_gen_pkg_MEDclasses)
+    
+    path_pkg_MEDclasses = __import__('MEDprofiles').__path__[0]
+    path_pkg_MEDclasses = os.path.join(path_pkg_MEDclasses, directory_name)
+    path_pycache = os.path.join(path_pkg_MEDclasses, "__pycache__") # Remove pycache file
+    if os.path.exists(path_pycache):
+        shutil.rmtree(path_pycache)
+    path_MEDclasses = os.path.join(path_gen_pkg_MEDclasses, directory_name)
+    shutil.copytree(path_pkg_MEDclasses, path_MEDclasses)
+
+    init_pkg_path = os.path.join(path_gen_pkg_MEDclasses, "__init__.py") # Create __init__ file for the pkg
+    f = open(init_pkg_path, "x")
+    f.close()
 
     # Create classes
     for class_ in classes_attributes_dict:
@@ -143,3 +154,6 @@ def main(path_master_table, path_MEDclasses='../../MEDclasses'):
         for class_ in list(classes_attributes_dict.keys()):
             file.write("from " + "." + class_ + " import " + class_ + "\n")
     file.close()
+
+    # Set the created module in the sys.path
+    sys.path.append(path_gen_pkg_MEDclasses)

@@ -9,7 +9,6 @@ import numpy as np
 from .MEDprofiles_utils import *
 from ...back.constant import *
 
-medclasses_module = __import__('MEDclasses')
 
 
 def display_cohort(axes, df_cohort, classes_attributes_dict, dict_points, dict_annotations, xaxis=[FIXED_COLUMNS[1]]):

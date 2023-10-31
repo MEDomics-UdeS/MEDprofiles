@@ -11,8 +11,6 @@ import pandas as pd
 
 from ...back.constant import FIXED_COLUMNS, MARKERS, DATE_FORMAT
 
-medclasses_module = __import__('MEDclasses')
-
 
 def get_nb_rows(classes_attributes_dict):
     """
@@ -108,6 +106,7 @@ def get_class_fields(class_):
     :return: List of the class attributes.
 
     """
+    import MEDclasses as medclasses_module
     return list(medclasses_module.__dict__[class_].__fields__)
 
 
