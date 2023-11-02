@@ -11,8 +11,6 @@ import pandas as pd
 import pickle
 from tqdm import tqdm
 
-from flask_server.submodules.MEDprofiles.MEDprofiles import MEDclasses
-
 from .constant import *
 
 progress = 0

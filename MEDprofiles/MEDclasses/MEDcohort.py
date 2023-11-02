@@ -1,5 +1,9 @@
 from pydantic import BaseModel
+from datetime import date
+from math import isnan
+import numpy as np
 from .MEDprofile import *
+import simplejson as json
 import pandas as pd
 
 
@@ -11,6 +15,19 @@ class MEDcohort(BaseModel):
 
     """
     list_MEDprofile: List[MEDprofile]
+
+    def to_json(self):
+        """
+        Serialize the MEDcohort instance to a JSON string.
+
+        :return: JSON representation of the MEDcohort instance.
+        """
+        def custom_json_encoder(obj):
+            if isinstance(obj, date):
+                return obj.isoformat()
+            raise TypeError(f"Object of type {obj.__class__.__name__} is not JSON serializable")
+
+        return json.dumps(self.dict(), ensure_ascii=False, ignore_nan=True, default=custom_json_encoder)
 
     def filter_med_profile_from_cohort(self, attribute_filter_dict, all_necessary_in_attribute=True, all_necessary=True,
                                        all_med_tab_necessary=True, filter_med_tab=True):
