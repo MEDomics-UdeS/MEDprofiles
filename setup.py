@@ -7,7 +7,7 @@ with open('requirements.txt') as f:
     requirements = f.readlines()
 
 setup(name='MEDprofiles',
-      version='0.1.0',
+      version='0.1.1',
       description='Python module for treatment and visualization of medical data.',
       long_description=long_description,
       long_description_content_type="text/markdown",
