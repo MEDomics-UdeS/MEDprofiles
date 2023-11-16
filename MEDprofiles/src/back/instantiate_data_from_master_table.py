@@ -6,6 +6,7 @@ The file 'create_classes_from_master_table' must have been executed before run.
 """
 
 import datetime
+import typing
 
 import pandas as pd
 import pickle
@@ -63,11 +64,10 @@ def main(source_file, destination_file):
 
                 # Fixed attributes are just str or float
                 if field in FIXED_COLUMNS:
-                    if med_tab.__fields__[field].type_ == datetime.date or med_tab.__fields__[field].type_ == \
-                            datetime.datetime:
+                    if str(typing.get_type_hints(med_tab)[field]).__contains__("datetime.date") or str(typing.get_type_hints(med_tab)[field]).__contains__("datetime.datetime"):
                         med_tab.__setattr__(field, med_tab.parse_date(profile_data[field].iloc[row]))
                     else:
-                        med_tab.__setattr__(field, med_tab.__fields__[field].type_(profile_data[field].iloc[row]))
+                        med_tab.__setattr__(field, profile_data[field].iloc[row])
 
                 # Other attributes are class objects
                 else:
@@ -79,8 +79,7 @@ def main(source_file, destination_file):
                             null = profile_data[field + '_' + attribute].isnull().iloc[row]
                             if not null:
                                 # Set the attribute with the good type
-                                class_object.__setattr__(attribute, class_object.__fields__[attribute].type_(
-                                    profile_data[field + '_' + attribute].iloc[row]))
+                                class_object.__setattr__(attribute, profile_data[field + '_' + attribute].iloc[row])
 
                     med_tab.__setattr__(field, class_object)
             med_tab_list.append(med_tab)

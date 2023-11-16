@@ -12,7 +12,7 @@ class MEDprofile(MEDbaseObject):
 
     """
     PatientID: str
-    list_MEDtab: Optional[List[MEDtab]]
+    list_MEDtab: Optional[List[MEDtab]] = None
 
     def filter_med_tab_from_profile(self, attribute_filter_dict, all_necessary_in_attribute=True, all_necessary=True):
         """

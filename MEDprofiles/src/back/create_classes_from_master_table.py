@@ -58,7 +58,7 @@ def create_class_file(path, class_name, attribute_list, base_class, directory_na
         file.write("class " + class_name + "(" + base_class + "):\n")
         for attribute in attribute_list:
             if attribute[2]:
-                file.write(tab + str(attribute[0]) + ": Optional[" + str(attribute[1]) + "]\n")
+                file.write(tab + str(attribute[0]) + ": Optional[" + str(attribute[1]) + "] = None\n")
             else:
                 file.write(tab + str(attribute[0]) + ": " + str(attribute[1]) + "\n")
         file.write("\n\n")
@@ -94,9 +94,9 @@ def add_attributes_to_class(path, class_name, attribute_list, types_list, base_c
                 new_data.append("from ." + attribute_list[i] + " import " + types_list[i] + "\n")
         # Check if the attributes are not already in the class definition and add them at the right place
         if line == "class " + class_name + '(' + base_class + '):\n' and tab + attribute_list[0] + ": Optional[" + \
-                types_list[0] + "]\n" not in data:
+                types_list[0] + "] = None\n" not in data:
             for i in range(len(attribute_list)):
-                new_data.append(tab + attribute_list[i] + ": Optional[" + types_list[i] + "]\n")
+                new_data.append(tab + attribute_list[i] + ": Optional[" + types_list[i] + "] = None\n")
     with open(class_path, "w") as file:
         file.writelines(new_data)
     file.close()
