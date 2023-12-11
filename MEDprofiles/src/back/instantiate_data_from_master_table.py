@@ -24,9 +24,29 @@ def get_progress():
     return progress
 
 
-def main(source_file, destination_file):
+def get_patient_id_list(master_table_path):
     """
-    Instantiate a list of MEDPatient objects from a csv file in MEDPatientData file with pickle.
+    Get all the patients identifiers as list.
+
+    :param master_table_path: path to master table file
+
+    Return patient_id_list
+    
+    """
+    # Get value from the master table
+    df = pd.read_csv(master_table_path, header=None, low_memory=False)
+    df.columns = df.iloc[INDEX_ATTRIBUTE_ROW]
+    df = df.drop(INDEX_TYPE_ROW).drop(INDEX_ATTRIBUTE_ROW)
+
+    # Get all the patient id
+    patient_id_list = list(df.transpose().loc[FIXED_COLUMNS[0]].drop_duplicates())
+    return patient_id_list
+
+
+def main(source_file, destination_file, patient_id_list=[]):
+    """
+    Instantiate a list of MEDPatient objects from a csv file in MEDPatientData file with pickle
+    and the list of patient we want to get data from.
 
     :param source_file: path to master table file
     :param destination_file: path to the generated pickle file
@@ -42,8 +62,9 @@ def main(source_file, destination_file):
     df.columns = df.iloc[INDEX_ATTRIBUTE_ROW]
     df = df.drop(INDEX_TYPE_ROW).drop(INDEX_ATTRIBUTE_ROW)
 
-    # Get all the patient id and create an empty list for MEDPatients (reduced for mimic data)
-    patient_id_list = df.transpose().loc[FIXED_COLUMNS[0]].drop_duplicates()[:100]
+    # Get all the patient id and create an empty list for MEDPatients
+    if len(patient_id_list) == 0:
+        patient_id_list = df.transpose().loc[FIXED_COLUMNS[0]].drop_duplicates()
     med_profile_list = []
 
     # Get data for each MEDPatient
@@ -51,7 +72,6 @@ def main(source_file, destination_file):
         # To set dynamically the required attributes (without knowing their names), we have to pass through a dictionary
         init = {FIXED_COLUMNS[0]: patientID}
         med_profile = medclasses_module.MEDprofile(**init)
-        #profile_data = df.where(df[FIXED_COLUMNS[0]] == patientID).dropna(how='all')
         profile_data = df.loc[df[FIXED_COLUMNS[0]] == patientID].dropna(how='all')
         med_tab_list = []
 
